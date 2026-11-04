@@ -8,6 +8,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/LuigiAjello/toolbr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/LuigiAjello/toolbr/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Código: MIT" src="https://img.shields.io/badge/c%C3%B3digo-MIT-16263A">
   <img alt="Dados: CC-BY-4.0" src="https://img.shields.io/badge/dados-CC--BY--4.0-16263A">
   <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-16263A">
@@ -53,7 +54,7 @@ A demo roda uma tarefa e mostra o veredito, o que o agente disse ao lado do que 
 Precisa do [uv](https://docs.astral.sh/uv/). Nenhuma chave de API é necessária para começar.
 
 ```bash
-git clone <este repositório> && cd toolbr
+git clone https://github.com/LuigiAjello/toolbr.git && cd toolbr
 uv run python -m toolbr gate          # portão de qualidade: segundos, sem chave
 ```
 

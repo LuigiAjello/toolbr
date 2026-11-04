@@ -28,6 +28,10 @@ mlflow = ["mlflow>=3.0"]
 demo = ["gradio>=5.0"]
 all = ["toolbr[anthropic,openai,langgraph,rag,mcp,mlflow,demo]"]
 
+[project.urls]
+Repository = "https://github.com/LuigiAjello/toolbr"
+Issues = "https://github.com/LuigiAjello/toolbr/issues"
+
 [project.scripts]
 toolbr = "toolbr.cli:main"
 
