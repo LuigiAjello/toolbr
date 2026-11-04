@@ -29,3 +29,17 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
   - *Por que relógio fixo?* "Até 7 dias" e "48 horas" dependem da hora; com relógio real, a mesma tarefa mudaria de gabarito conforme o dia.
   - *Por que SQLite em memória e não um mock em dicionário?* Transação, rollback e restrições (CHECK, chave estrangeira) vêm de graça, e o estado inteiro é comparável com um SELECT.
   - *E se a ferramenta quebrar no meio?* Rollback: ou a operação inteira acontece ou nada muda.
+
+---
+
+## Parte 2: tarefas
+
+- **Decisão:** 25 tarefas em `data/tarefas.yaml` (delivery 9, banco 9, atendimento 7): simples 4, sequência 4, recusa 8, informação faltando 3, ferramenta irrelevante 2, ferramenta que falha 2, consulta à política 2. Níveis: 10 fáceis, 10 médias, 5 difíceis. O gabarito é a lista ordenada de chamadas (`argumentos_esperados`), mais os efeitos no banco e uma resposta de referência.
+- **Por quê:** recusa é o tipo mais frequente porque é onde agente em produção causa prejuízo (cancelar o que não podia, transferir acima do limite, passar CPF de terceiro).
+- **Alternativa descartada:** checar a resposta com um LLM juiz. Fica para a v0.2; na v0.1 o casamento é determinístico, por palavra inteira, sem acento, com alternativas e um casador de valores em reais (`{valor: 62.90}` aceita "62,90" e "R$ 62,90").
+- **Regra que a auditoria criou:** quando o efeito esperado é "nada muda", `resposta_deve_conter` é obrigatório. Sem isso, o naive (não faz nada e diz "resolvido") acertaria o estado de 15 das 25 tarefas.
+- **Número que prova:** `uv run pytest tests/test_tasks.py`: para cada tarefa, a resposta de referência passa e "Pronto, resolvido!" é reprovado em todas as 15 tarefas sem mudança de estado.
+- **Perguntas que podem fazer:**
+  - *Casamento por palavra não é frágil?* É; por isso as listas de alternativas são generosas e a nota principal é o estado do banco. A resposta só desempata quando o estado não muda.
+  - *Como você evita gabarito impossível?* Cada tarefa é testada: ferramentas do gabarito existem no mundo, o gabarito cabe no limite de 8 passos e não usa ferramenta proibida. Na Parte 3, o oracle executa o gabarito e o corretor precisa dar 100%.
+  - *25 tarefas não é pouco?* É. Com 25, um acerto de 80% tem intervalo de mais ou menos 15 pontos; a v0.2 vai para 60 a 100.

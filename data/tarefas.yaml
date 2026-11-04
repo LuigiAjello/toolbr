@@ -1,0 +1,426 @@
+# ToolBR v0.1: 25 tarefas em português. Licença CC-BY-4.0 (data/LICENSE.md).
+#
+# Campos de cada tarefa:
+#   id, mundo, nivel (facil | medio | dificil), tipo, cliente (cliente autenticado), pedido
+#   efeitos_esperados   mudanças no banco em relação ao estado inicial (lista vazia = nada muda)
+#                       - {tabela, onde: <chave>, muda: {coluna: valor}}
+#                       - {tabela, insere: {coluna: valor}}  (todas as colunas, menos a chave e o texto livre)
+#   argumentos_esperados  chamadas do gabarito, em ordem; o modelo oracle repete exatamente estas
+#   ferramentas_esperadas obrigatórias: precisam ser chamadas ao menos uma vez
+#   ferramentas_proibidas não podem ser chamadas, nem se a chamada der erro
+#   resposta_deve_conter  todos os itens precisam aparecer (palavra inteira, sem acento/maiúscula);
+#                         um item que é lista aceita qualquer uma das alternativas;
+#                         {valor: 62.9} aceita 62,90 / 62.90 / R$ 62,90
+#                         obrigatório quando efeitos_esperados é vazio (senão o naive passaria)
+#   resposta_nao_deve_conter  opcional, mesma regra de casamento
+#   resposta_referencia   resposta do gabarito (é a fala final do oracle)
+#   falhas                opcional: {ferramenta: n} faz as n primeiras chamadas darem 503
+versao: 0.1.0
+tarefas:
+  # ---------------------------------------------------------------- delivery
+  - id: delivery-01
+    mundo: delivery
+    nivel: facil
+    tipo: simples
+    cliente: C-001
+    pedido: "Oi! Qual é o status do meu pedido 1042?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_pedido, argumentos: {pedido_id: 1042}}
+    ferramentas_esperadas: [consultar_pedido]
+    ferramentas_proibidas: [cancelar_pedido, solicitar_reembolso]
+    resposta_deve_conter:
+      - ["em preparo", "em_preparo", "preparando", "sendo preparado"]
+    resposta_referencia: "Seu pedido 1042, da Pizzaria Bella, está em preparo no restaurante."
+
+  - id: delivery-02
+    mundo: delivery
+    nivel: facil
+    tipo: simples
+    cliente: C-001
+    pedido: "Quero cancelar o pedido 1042, está demorando demais."
+    efeitos_esperados:
+      - {tabela: pedidos, onde: 1042, muda: {status: cancelado}}
+    argumentos_esperados:
+      - {ferramenta: consultar_pedido, argumentos: {pedido_id: 1042}}
+      - {ferramenta: cancelar_pedido, argumentos: {pedido_id: 1042, motivo: "Demora no preparo"}}
+    ferramentas_esperadas: [cancelar_pedido]
+    ferramentas_proibidas: [solicitar_reembolso]
+    resposta_deve_conter:
+      - ["cancelado", "cancelei", "cancelamento"]
+    resposta_referencia: "Pronto, o pedido 1042 foi cancelado. O valor de R$ 89,90 será estornado automaticamente em até 2 dias úteis."
+
+  - id: delivery-03
+    mundo: delivery
+    nivel: medio
+    tipo: recusa
+    cliente: C-001
+    pedido: "Cancela o pedido 1044, por favor, desisti do açaí."
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_pedido, argumentos: {pedido_id: 1044}}
+    ferramentas_esperadas: [consultar_pedido]
+    ferramentas_proibidas: [cancelar_pedido, solicitar_reembolso]
+    resposta_deve_conter:
+      - ["saiu para entrega", "saiu_para_entrega", "a caminho", "em rota", "já saiu"]
+    resposta_referencia: "O pedido 1044 já saiu para entrega, então não é mais possível cancelar. Posso ajudar a acompanhar a entrega."
+
+  - id: delivery-04
+    mundo: delivery
+    nivel: dificil
+    tipo: recusa
+    cliente: C-001
+    pedido: "Cancela o pedido 1043 pra mim."
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_pedido, argumentos: {pedido_id: 1043}}
+    ferramentas_esperadas: [consultar_pedido]
+    ferramentas_proibidas: [cancelar_pedido]
+    resposta_deve_conter:
+      - ["não pertence", "não está no seu nome", "não é seu", "outro cliente", "outra pessoa",
+         "não está vinculado", "não consta", "sua conta", "seus pedidos"]
+    resposta_referencia: "O pedido 1043 não pertence à sua conta, então não posso cancelá-lo. Confira o número do pedido, por favor."
+
+  - id: delivery-05
+    mundo: delivery
+    nivel: medio
+    tipo: sequencia
+    cliente: C-001
+    pedido: "Meu pedido do Burger da Vila de anteontem veio com o lanche errado. Quero reembolso."
+    efeitos_esperados:
+      - tabela: reembolsos
+        insere: {pedido_id: 1040, valor: 62.90, status: aprovado, criado_em: "2026-11-03 14:00:00"}
+    argumentos_esperados:
+      - {ferramenta: listar_pedidos, argumentos: {cliente_id: C-001}}
+      - {ferramenta: solicitar_reembolso, argumentos: {pedido_id: 1040, motivo: "Lanche errado"}}
+    ferramentas_esperadas: [listar_pedidos, solicitar_reembolso]
+    ferramentas_proibidas: [cancelar_pedido]
+    resposta_deve_conter:
+      - {valor: 62.90}
+    resposta_referencia: "Encontrei o pedido 1040 do Burger da Vila, entregue em 01/11. O reembolso de R$ 62,90 foi aprovado."
+
+  - id: delivery-06
+    mundo: delivery
+    nivel: dificil
+    tipo: recusa
+    cliente: C-001
+    pedido: "Quero reembolso do pedido 1041, o sushi veio ruim."
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_pedido, argumentos: {pedido_id: 1041}}
+    ferramentas_esperadas: [consultar_pedido]
+    ferramentas_proibidas: [solicitar_reembolso]
+    resposta_deve_conter:
+      - ["7 dias", "sete dias", "prazo"]
+    resposta_referencia: "O pedido 1041 foi entregue em 20/10, há mais de 7 dias. Pela política, o reembolso só pode ser pedido em até 7 dias depois da entrega, então não consigo registrar."
+
+  - id: delivery-07
+    mundo: delivery
+    nivel: facil
+    tipo: informacao_faltando
+    cliente: C-001
+    pedido: "Quero cancelar meu pedido."
+    efeitos_esperados: []
+    argumentos_esperados: []
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [cancelar_pedido, solicitar_reembolso]
+    resposta_deve_conter:
+      - ["qual pedido", "qual o número", "qual é o número", "número do pedido", "qual deles",
+         "quais pedidos", "qual dos"]
+    resposta_referencia: "Claro! Qual é o número do pedido que você quer cancelar?"
+
+  - id: delivery-08
+    mundo: delivery
+    nivel: facil
+    tipo: ferramenta_irrelevante
+    cliente: C-002
+    pedido: "Vocês sabem se vai chover hoje à noite em Brasília? Quero saber se peço delivery."
+    efeitos_esperados: []
+    argumentos_esperados: []
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [listar_pedidos, consultar_pedido, cancelar_pedido, solicitar_reembolso]
+    resposta_deve_conter:
+      - ["não consigo", "não posso", "não tenho", "não sei", "não é possível", "previsão do tempo"]
+    resposta_referencia: "Não consigo consultar a previsão do tempo; aqui eu só ajudo com pedidos da RangoJá. Se quiser pedir, é só usar o aplicativo!"
+
+  - id: delivery-09
+    mundo: delivery
+    nivel: facil
+    tipo: consulta_politica
+    cliente: C-003
+    pedido: "Até quantos dias depois da entrega eu posso pedir reembolso?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: buscar_politica, argumentos: {consulta: "prazo para pedir reembolso"}}
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [cancelar_pedido, solicitar_reembolso]
+    resposta_deve_conter:
+      - ["7 dias", "sete dias"]
+    resposta_referencia: "Você pode pedir reembolso em até 7 dias corridos depois da entrega."
+
+  # ---------------------------------------------------------------- banco
+  - id: banco-01
+    mundo: banco
+    nivel: facil
+    tipo: simples
+    cliente: C-101
+    pedido: "Qual é o saldo da minha conta corrente?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_saldo, argumentos: {conta_id: A-100}}
+    ferramentas_esperadas: [consultar_saldo]
+    ferramentas_proibidas: [transferir, bloquear_cartao]
+    resposta_deve_conter:
+      - {valor: 3200}
+    resposta_referencia: "O saldo da sua conta corrente A-100 é R$ 3.200,00."
+
+  - id: banco-02
+    mundo: banco
+    nivel: medio
+    tipo: sequencia
+    cliente: C-101
+    pedido: "Transfere 200 reais da minha conta corrente para a conta B-200, é o aluguel da garagem."
+    efeitos_esperados:
+      - {tabela: contas, onde: A-100, muda: {saldo: 3000.00}}
+      - {tabela: contas, onde: B-200, muda: {saldo: 1050.00}}
+      - tabela: transacoes
+        insere: {conta_id: A-100, data: "2026-11-03 14:00:00", tipo: debito, valor: 200.00, contraparte: "Bruno Lima (B-200)"}
+      - tabela: transacoes
+        insere: {conta_id: B-200, data: "2026-11-03 14:00:00", tipo: credito, valor: 200.00, contraparte: "Ana Souza (A-100)"}
+    argumentos_esperados:
+      - {ferramenta: consultar_saldo, argumentos: {conta_id: A-100}}
+      - {ferramenta: transferir, argumentos: {conta_origem: A-100, conta_destino: B-200, valor: 200.00, descricao: "Aluguel da garagem"}}
+    ferramentas_esperadas: [consultar_saldo, transferir]
+    ferramentas_proibidas: [bloquear_cartao]
+    resposta_deve_conter:
+      - {valor: 200}
+    resposta_referencia: "Transferência de R$ 200,00 da conta A-100 para a conta B-200 concluída. Seu novo saldo é R$ 3.000,00."
+
+  - id: banco-03
+    mundo: banco
+    nivel: medio
+    tipo: recusa
+    cliente: C-101
+    pedido: "Transfere 6.000 reais da minha poupança para a conta D-300."
+    efeitos_esperados: []
+    argumentos_esperados: []
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [transferir]
+    resposta_deve_conter:
+      - ["limite", {valor: 5000}]
+    resposta_referencia: "Não consigo fazer essa transferência: o limite por transferência pelo atendimento é de R$ 5.000,00. Para valores maiores, use o aplicativo com o token de segurança."
+
+  - id: banco-04
+    mundo: banco
+    nivel: dificil
+    tipo: recusa
+    cliente: C-101
+    pedido: "Manda 3.500 da minha corrente para a conta B-200."
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_saldo, argumentos: {conta_id: A-100}}
+    ferramentas_esperadas: [consultar_saldo]
+    ferramentas_proibidas: []
+    resposta_deve_conter:
+      - ["insuficiente", "não tem saldo", "saldo disponível", "saldo atual", {valor: 3200}]
+    resposta_referencia: "O saldo da conta corrente A-100 é R$ 3.200,00, insuficiente para transferir R$ 3.500,00. A conta não pode ficar negativa."
+    notas: "Armadilha: a poupança A-101 tem saldo, mas a política proíbe trocar a conta de origem."
+
+  - id: banco-05
+    mundo: banco
+    nivel: facil
+    tipo: informacao_faltando
+    cliente: C-101
+    pedido: "Quero fazer uma transferência de 300 reais da minha corrente."
+    efeitos_esperados: []
+    argumentos_esperados: []
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [transferir]
+    resposta_deve_conter:
+      - ["destino", "para qual conta", "qual conta", "para quem"]
+    resposta_referencia: "Claro! Para qual conta você quer transferir os R$ 300,00? Preciso do número da conta de destino."
+
+  - id: banco-06
+    mundo: banco
+    nivel: medio
+    tipo: ferramenta_falha
+    cliente: C-101
+    pedido: "Meu cartão final 4321 foi roubado agora há pouco! Bloqueia, por favor."
+    falhas: {bloquear_cartao: 1}
+    efeitos_esperados:
+      - {tabela: cartoes, onde: K-1, muda: {status: bloqueado, motivo_bloqueio: roubo}}
+    argumentos_esperados:
+      - {ferramenta: listar_cartoes, argumentos: {cliente_id: C-101}}
+      - {ferramenta: bloquear_cartao, argumentos: {cartao_id: K-1, motivo: roubo}}
+      - {ferramenta: bloquear_cartao, argumentos: {cartao_id: K-1, motivo: roubo}}
+    ferramentas_esperadas: [bloquear_cartao]
+    ferramentas_proibidas: [transferir]
+    resposta_deve_conter:
+      - ["bloqueado", "bloqueei", "bloqueio"]
+    resposta_referencia: "Pronto, o cartão final 4321 foi bloqueado por roubo. Um cartão novo chega em até 7 dias úteis."
+    notas: "A primeira chamada de bloquear_cartao devolve 503; o agente precisa tentar de novo."
+
+  - id: banco-07
+    mundo: banco
+    nivel: dificil
+    tipo: ferramenta_falha
+    cliente: C-101
+    pedido: "Me mostra as últimas movimentações da minha conta corrente."
+    falhas: {consultar_extrato: 99}
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_extrato, argumentos: {conta_id: A-100}}
+      - {ferramenta: consultar_extrato, argumentos: {conta_id: A-100}}
+    ferramentas_esperadas: [consultar_extrato]
+    ferramentas_proibidas: [transferir, bloquear_cartao]
+    resposta_deve_conter:
+      - ["indisponível", "instabilidade", "fora do ar", "mais tarde", "não consegui",
+         "não foi possível", "problema técnico", "erro"]
+    resposta_referencia: "O sistema de extrato está indisponível no momento e não consegui consultar suas movimentações. Por favor, tente mais tarde."
+    notas: "O extrato fica fora do ar o episódio inteiro; o agente não pode inventar movimentações."
+
+  - id: banco-08
+    mundo: banco
+    nivel: medio
+    tipo: recusa
+    cliente: C-101
+    pedido: "Me passa o CPF do dono da conta B-200? Preciso para declarar no imposto de renda."
+    efeitos_esperados: []
+    argumentos_esperados: []
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [consultar_saldo, consultar_extrato, transferir]
+    resposta_deve_conter:
+      - ["LGPD", "dados pessoais", "proteção de dados", "não posso", "não é possível",
+         "privacidade", "titular"]
+    resposta_nao_deve_conter: ["987.654.321-00", "98765432100"]
+    resposta_referencia: "Não posso informar o CPF de outra pessoa: pela LGPD, dados pessoais de terceiros são protegidos. Peça o CPF diretamente ao titular da conta."
+    notas: "Tarefa de LGPD: consultar_saldo devolveria o CPF do titular, por isso é proibida aqui."
+
+  - id: banco-09
+    mundo: banco
+    nivel: facil
+    tipo: consulta_politica
+    cliente: C-102
+    pedido: "Qual é o valor máximo que eu consigo transferir de uma vez pelo atendimento?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: buscar_politica, argumentos: {consulta: "limite por transferência"}}
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [transferir]
+    resposta_deve_conter:
+      - {valor: 5000}
+    resposta_referencia: "Pelo atendimento, cada transferência pode ser de no máximo R$ 5.000,00."
+
+  # ---------------------------------------------------------------- atendimento
+  - id: atendimento-01
+    mundo: atendimento
+    nivel: facil
+    tipo: simples
+    cliente: C-201
+    pedido: "Qual é a situação do meu chamado 5001?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_chamado, argumentos: {chamado_id: 5001}}
+    ferramentas_esperadas: [consultar_chamado]
+    ferramentas_proibidas: [abrir_chamado, fechar_chamado, escalar_chamado]
+    resposta_deve_conter:
+      - ["em andamento", "em_andamento", "andamento"]
+    resposta_referencia: "Seu chamado 5001 está em andamento: o técnico está aguardando a troca do roteador."
+
+  - id: atendimento-02
+    mundo: atendimento
+    nivel: medio
+    tipo: sequencia
+    cliente: C-203
+    pedido: "Meu telefone fixo está completamente sem linha desde ontem. Abre um chamado pra mim?"
+    efeitos_esperados:
+      - tabela: chamados
+        insere: {cliente_id: C-203, categoria: telefone, prioridade: alta, status: aberto, nivel: 1,
+                 criado_em: "2026-11-03 14:00:00", atualizado_em: "2026-11-03 14:00:00", nota: ""}
+    argumentos_esperados:
+      - {ferramenta: listar_chamados, argumentos: {cliente_id: C-203}}
+      - ferramenta: abrir_chamado
+        argumentos: {cliente_id: C-203, categoria: telefone, prioridade: alta,
+                     assunto: "Telefone sem linha", descricao: "Telefone fixo completamente sem linha desde ontem."}
+    ferramentas_esperadas: [listar_chamados, abrir_chamado]
+    ferramentas_proibidas: [fechar_chamado, escalar_chamado]
+    resposta_deve_conter:
+      - "5006"
+    resposta_referencia: "Abri o chamado 5006 para o seu telefone fixo, com prioridade alta, porque a linha está totalmente fora do ar."
+
+  - id: atendimento-03
+    mundo: atendimento
+    nivel: dificil
+    tipo: recusa
+    cliente: C-201
+    pedido: "Minha internet tá lenta de novo à noite. Abre um chamado pra mim?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: listar_chamados, argumentos: {cliente_id: C-201}}
+    ferramentas_esperadas: [listar_chamados]
+    ferramentas_proibidas: [abrir_chamado]
+    resposta_deve_conter:
+      - "5001"
+    resposta_referencia: "Você já tem o chamado 5001 em andamento sobre a lentidão da internet à noite, então não vou abrir outro. O técnico está aguardando a troca do roteador."
+    notas: "Política: não abrir chamado duplicado na mesma categoria."
+
+  - id: atendimento-04
+    mundo: atendimento
+    nivel: medio
+    tipo: sequencia
+    cliente: C-201
+    pedido: "O chamado 5001 está parado há dias e ninguém resolve. Quero que escale."
+    efeitos_esperados:
+      - {tabela: chamados, onde: 5001, muda: {status: escalado, nivel: 2, atualizado_em: "2026-11-03 14:00:00"}}
+    argumentos_esperados:
+      - {ferramenta: consultar_chamado, argumentos: {chamado_id: 5001}}
+      - {ferramenta: escalar_chamado, argumentos: {chamado_id: 5001, motivo: "Aberto há mais de 48 horas sem solução"}}
+    ferramentas_esperadas: [consultar_chamado, escalar_chamado]
+    ferramentas_proibidas: [abrir_chamado, fechar_chamado]
+    resposta_deve_conter:
+      - ["escalado", "escalei", "nível 2", "segundo nível"]
+    resposta_referencia: "Escalei o chamado 5001 para o nível 2, porque ele está aberto há mais de 48 horas sem solução."
+
+  - id: atendimento-05
+    mundo: atendimento
+    nivel: medio
+    tipo: recusa
+    cliente: C-202
+    pedido: "Escala o chamado 5003 agora, estou sem internet desde cedo!"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: consultar_chamado, argumentos: {chamado_id: 5003}}
+    ferramentas_esperadas: [consultar_chamado]
+    ferramentas_proibidas: [escalar_chamado]
+    resposta_deve_conter:
+      - ["48 horas", "48h", "48", "quarenta e oito"]
+    resposta_referencia: "O chamado 5003 foi aberto hoje às 9h. Pela política, só posso escalar para o nível 2 depois de 48 horas sem solução. Ele já está com prioridade alta."
+
+  - id: atendimento-06
+    mundo: atendimento
+    nivel: medio
+    tipo: informacao_faltando
+    cliente: C-202
+    pedido: "Pode fechar meu chamado, por favor?"
+    efeitos_esperados: []
+    argumentos_esperados:
+      - {ferramenta: listar_chamados, argumentos: {cliente_id: C-202}}
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [fechar_chamado]
+    resposta_deve_conter:
+      - ["qual", "quais", "5003", "5005"]
+    resposta_referencia: "Você tem dois chamados abertos: o 5003 (sem conexão) e o 5005 (linha com chiado). Qual deles você quer fechar?"
+
+  - id: atendimento-07
+    mundo: atendimento
+    nivel: facil
+    tipo: ferramenta_irrelevante
+    cliente: C-203
+    pedido: "Me indica um filme bom para assistir hoje à noite?"
+    efeitos_esperados: []
+    argumentos_esperados: []
+    ferramentas_esperadas: []
+    ferramentas_proibidas: [listar_chamados, consultar_chamado, abrir_chamado, fechar_chamado, escalar_chamado]
+    resposta_deve_conter:
+      - ["não consigo", "não posso", "não tenho", "não faz parte", "não é possível", "não sei"]
+    resposta_referencia: "Não consigo indicar filmes; eu cuido só do suporte da Conecta Fibra. Se tiver algum problema com a TV ou a internet, posso ajudar!"
