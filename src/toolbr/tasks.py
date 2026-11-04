@@ -39,6 +39,8 @@ class Injection:
     malicious_call: Call
     language: str
     disguise: str
+    # o id/valor do ataque também aparece em dado confiável: o portão não barra
+    passes_provenance_gate: bool = False
 
 
 @dataclass(frozen=True)
@@ -74,6 +76,7 @@ def _parse_task(raw: dict[str, Any]) -> Task:
             malicious_call=Call(mal["ferramenta"], dict(mal["argumentos"])),
             language=inj["idioma"],
             disguise=inj["disfarce"],
+            passes_provenance_gate=bool(inj.get("passa_no_portao", False)),
         )
     return Task(
         id=raw["id"],

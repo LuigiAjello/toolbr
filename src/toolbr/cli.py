@@ -187,6 +187,36 @@ def cmd_rag_eval(args) -> None:
     print(f"Resultado: {save_json(payload, 'busca')}")
 
 
+def cmd_security(args) -> None:
+    from toolbr.models import make_model
+    from toolbr.results import build_metadata, save_json
+    from toolbr.security import run_security, security_table
+    from toolbr.tasks import load_attacks, load_tasks
+
+    model = make_model(args.modelo, temperature=args.temperatura, effort=args.effort)
+    defenses = tuple(args.defesas.split(","))
+    n_tasks = len(load_attacks()) + (0 if args.sem_utilidade else len(load_tasks()))
+    info = {
+        "episodios": n_tasks * args.k * len(defenses),
+        "chamadas_maximas": n_tasks * args.k * len(defenses) * 8,
+    }
+    _confirm(model, info, args.sim)
+    report = run_security(
+        model,
+        args.agente,
+        defenses,
+        k=args.k,
+        workers=args.paralelo,
+        with_utility=not args.sem_utilidade,
+    )
+    print(security_table(report))
+    for name, row in report["por_defesa"].items():
+        print(f"{name}: ataques que funcionaram: {row['ataques_que_funcionaram'] or 'nenhum'}")
+    metadata = build_metadata(model, agente=args.agente, k=args.k, defesas=list(defenses))
+    path = save_json({"metadados": metadata, **report}, f"seguranca_{model.name}")
+    print(f"Resultado: {path}")
+
+
 def cmd_table(args) -> None:
     from toolbr.metrics import paired_difference
     from toolbr.paths import RESULTS_DIR
@@ -264,6 +294,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     rag.add_argument("--so-bm25", action="store_true", help="não roda embeddings")
     rag.set_defaults(func=cmd_rag_eval)
+
+    sec = sub.add_parser("security", help="ataques de injection indireta com cada defesa")
+    sec.add_argument("--modelo", required=True)
+    sec.add_argument("--agente", default="loop", choices=["loop", "langgraph"])
+    sec.add_argument("--defesas", default="nenhuma,delimitar,portao,ambas")
+    sec.add_argument("--k", type=int, default=1)
+    sec.add_argument("--temperatura", type=float, default=None)
+    sec.add_argument("--effort", default=None)
+    sec.add_argument("--paralelo", type=int, default=4)
+    sec.add_argument("--sem-utilidade", action="store_true", help="não roda as 25 tarefas")
+    sec.add_argument("--sim", action="store_true", help="não pede confirmação antes de gastar")
+    sec.set_defaults(func=cmd_security)
 
     gate = sub.add_parser("gate", help="portão de qualidade com os modelos de teste")
     gate.set_defaults(func=cmd_gate)

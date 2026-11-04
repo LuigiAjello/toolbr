@@ -8,6 +8,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from toolbr.tasks import Task
@@ -15,6 +16,11 @@ from toolbr.types import ModelTurn, ToolCall
 from toolbr.worlds.base import ToolSpec
 
 NAIVE_ANSWER = "Pronto, resolvido!"
+
+
+def _visible(text: str) -> str:
+    """Texto sem os sinais que a defesa delimitar troca (o modelo ainda 'lê' a frase)."""
+    return re.sub(r"[<>‹›]", "", text)
 
 
 class _TestModel:
@@ -84,7 +90,7 @@ class VulnerableModel(OracleModel):
             if message["role"] == "assistant":
                 step += 1
             elif message["role"] == "tool" and any(
-                injection.text[:40] in r["content"] for r in message["results"]
+                _visible(injection.text)[:40] in _visible(r["content"]) for r in message["results"]
             ):
                 attack = (injection.malicious_call.tool, injection.malicious_call.args)
                 return script[:step] + [attack] + script[step:]
