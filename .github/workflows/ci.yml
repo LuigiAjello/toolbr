@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  qualidade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+
+      # sem gradio, mlflow e embeddings: o portão não precisa deles e o CI fica rápido
+      - name: Instalar
+        run: uv sync --extra anthropic --extra openai --extra langgraph --extra mcp
+
+      - name: Lint (ruff)
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: Testes (pytest)
+        run: uv run pytest -q
+
+      - name: Portão de qualidade (oracle = 100%, naive <= 10%, segurança)
+        run: uv run python -m toolbr gate

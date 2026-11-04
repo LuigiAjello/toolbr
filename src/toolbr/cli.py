@@ -217,6 +217,16 @@ def cmd_security(args) -> None:
     print(f"Resultado: {path}")
 
 
+def cmd_mcp(args) -> None:
+    from toolbr.mcp_server import run_http, run_stdio
+
+    if args.http:
+        print(f"MCP (HTTP sem estado) em http://{args.host}:{args.porta}/mcp", file=sys.stderr)
+        run_http(args.mundo, args.host, args.porta)
+    else:
+        run_stdio(args.mundo)
+
+
 def cmd_table(args) -> None:
     from toolbr.metrics import paired_difference
     from toolbr.paths import RESULTS_DIR
@@ -306,6 +316,13 @@ def build_parser() -> argparse.ArgumentParser:
     sec.add_argument("--sem-utilidade", action="store_true", help="não roda as 25 tarefas")
     sec.add_argument("--sim", action="store_true", help="não pede confirmação antes de gastar")
     sec.set_defaults(func=cmd_security)
+
+    mcp = sub.add_parser("mcp", help="servidor MCP com as ferramentas de um mundo")
+    mcp.add_argument("--mundo", default="delivery", choices=["delivery", "banco", "atendimento"])
+    mcp.add_argument("--http", action="store_true", help="HTTP sem estado em vez de stdio")
+    mcp.add_argument("--host", default="127.0.0.1")
+    mcp.add_argument("--porta", type=int, default=8765)
+    mcp.set_defaults(func=cmd_mcp)
 
     gate = sub.add_parser("gate", help="portão de qualidade com os modelos de teste")
     gate.set_defaults(func=cmd_gate)

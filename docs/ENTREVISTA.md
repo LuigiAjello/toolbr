@@ -117,3 +117,18 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
   - *Qual defesa funcionou e quanto ela custou em utilidade?* Com os modelos de teste, o portão corta o ASR de 100% para 25% sem perder utilidade nas 25 tarefas. Com LLM real: pendente.
   - *Por que o portão não resolve tudo?* Ele confere de onde veio o valor, não a intenção. Se o atacante manda agir sobre algo que o cliente acabou de ver, o valor é "confiável". Fechar essa brecha exige confirmar com o cliente antes de ações sensíveis, ou separar o planejamento da leitura de dados (como no CaMeL).
   - *Por que medir "tentou" além de "funcionou"?* Uma defesa que barra a ação pode esconder um modelo que obedece ao atacante. A taxa de tentativa mostra se o modelo foi enganado, mesmo quando o estrago não aconteceu.
+
+---
+
+## Parte 8: MCP, MLflow e CI
+
+- **MCP:** `python -m toolbr mcp --mundo delivery` expõe as ferramentas de um mundo por stdio (para Claude Desktop ou Claude Code); `--http` sobe HTTP **sem estado de sessão e com resposta JSON, sem SSE**, como na spec 2026-07-28. Uso o servidor de baixo nível do SDK `mcp` 2.3 porque as ferramentas já têm schema JSON. Erro de ferramenta volta como `is_error: true` e também como `structured_content`.
+- **MLflow:** `--mlflow` no `run` registra parâmetros (modelo, agente, defesa, k, commit, effort), métricas (`sucesso`, `pass_hat_1` a `pass_hat_4`, acertos, latência, tokens, custo quando há preço) e o JSON de resultado como artefato, com backend SQLite (`mlflow.db`).
+- **CI:** GitHub Actions com ruff (lint e formato), pytest e o portão (`python -m toolbr gate`). O CI instala só o necessário (sem Gradio, MLflow e embeddings), e os testes que dependem desses extras são pulados.
+- **Armadilhas que apareceram de verdade:** (1) o GET em `/mcp` abre um stream que não fecha: meu `curl` de espera travou; o cliente MCP usa só POST. (2) O MLflow grava artefatos em `./mlruns` relativo à pasta atual: o teste sujava a raiz do repositório e agora roda numa pasta temporária. (3) Métrica com `^` não é aceita: `pass^4` vira `pass_hat_4`.
+- **Alternativa descartada:** `MCPServer` (o antigo FastMCP), que infere o schema das assinaturas Python. Eu teria de recriar cada ferramenta como função só para o SDK ler o schema que já existe.
+- **Número que prova:** `uv run pytest tests/test_infra.py`: o cliente MCP em memória negocia o protocolo `2026-07-28`, lista as 5 ferramentas do delivery e recebe erro estruturado; o MLflow grava `pass_hat_2 = 1.0` para o oracle. CI simulado num venv limpo: 121 testes passando, 1 pulado, portão ok.
+- **Perguntas que podem fazer:**
+  - *Como uma empresa usaria isso no CI dela?* O mesmo `gate` que roda aqui. Para o agente dela, a v0.3 traz a interface "traga seu agente": o CI roda as 25 tarefas com um subconjunto pequeno e falha se o sucesso cair de forma significativa em relação à linha de base (`table --comparar` já calcula a diferença pareada com intervalo).
+  - *Por que MCP sem estado?* Escala horizontalmente atrás de qualquer balanceador, sem afinidade de sessão; o estado que importa (o banco do mundo) fica no servidor, não na conexão.
+  - *E A2A?* MCP liga um agente a ferramentas; A2A liga agentes entre si. Um próximo passo seria expor o próprio agente do ToolBR como serviço A2A e medir um agente orquestrando outro.
