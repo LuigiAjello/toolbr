@@ -132,3 +132,15 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
   - *Como uma empresa usaria isso no CI dela?* O mesmo `gate` que roda aqui. Para o agente dela, a v0.3 traz a interface "traga seu agente": o CI roda as 25 tarefas com um subconjunto pequeno e falha se o sucesso cair de forma significativa em relação à linha de base (`table --comparar` já calcula a diferença pareada com intervalo).
   - *Por que MCP sem estado?* Escala horizontalmente atrás de qualquer balanceador, sem afinidade de sessão; o estado que importa (o banco do mundo) fica no servidor, não na conexão.
   - *E A2A?* MCP liga um agente a ferramentas; A2A liga agentes entre si. Um próximo passo seria expor o próprio agente do ToolBR como serviço A2A e medir um agente orquestrando outro.
+
+---
+
+## Parte 9: demo em Gradio
+
+- **Decisão:** uma tela: escolher a tarefa (as 25 e os 12 ataques), o modelo, o agente e a defesa; ver o veredito, **"o agente disse" ao lado de "o banco mostra"**, as chamadas na ordem (barradas aparecem como "barrada pela defesa") e o banco antes e depois. A tarefa padrão roda ao abrir a página. Sem chave de API, só os modelos de teste aparecem, com um aviso destacado de que não são um LLM.
+- **Por quê:** a tese do ToolBR é que o corretor ignora o que o agente diz e olha o banco; a tela mostra exatamente essa comparação. No ataque, dá para ver o pedido 1043 de outro cliente sendo cancelado sem defesa, e a mesma chamada barrada com o portão.
+- **Alternativa descartada:** um chat (`gr.Chatbot`). Mostra a conversa, mas esconde o que importa aqui: o estado do banco e o veredito.
+- **Detalhe que o screenshot pegou:** com cores fixas, o título ficou invisível no modo escuro; agora as cores vêm das variáveis do tema, com verde e vermelho próprios para o escuro.
+- **Número que prova:** `uv run pytest tests/test_demo.py`: o vulnerable sem defesa cancela o 1043 de outro cliente; com o portão, a chamada aparece barrada e o banco não muda.
+- **Perguntas que podem fazer:**
+  - *Por que a demo não deixa digitar qualquer pedido com o modelo de teste?* Deixa, mas avisa: o modelo de teste ignora o texto e o corretor usa o gabarito da tarefa escolhida. Com um LLM real, o pedido editado vale.
