@@ -144,3 +144,25 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
 - **Número que prova:** `uv run pytest tests/test_demo.py`: o vulnerable sem defesa cancela o 1043 de outro cliente; com o portão, a chamada aparece barrada e o banco não muda.
 - **Perguntas que podem fazer:**
   - *Por que a demo não deixa digitar qualquer pedido com o modelo de teste?* Deixa, mas avisa: o modelo de teste ignora o texto e o corretor usa o gabarito da tarefa escolhida. Com um LLM real, o pedido editado vale.
+
+---
+
+## Parte 10: README e resultados
+
+- **Decisão:** README com o que é em 1 frase, motivação, 1 comando (`uv run python -m toolbr gate`), diagrama, métricas, resultados (tabela de modelos reais **vazia** até rodar), comparação honesta e limitações. Cada número tem comando e arquivo em `results/`, gerado no commit `66252f3`, sem alteração pendente.
+- **Pendente para fechar a v0.1:** rodar 2 modelos reais com k = 4 (precisa de chave no `.env` e do seu ok de custo) e preencher `data/precos.yaml`.
+
+---
+
+## As 10 perguntas
+
+1. **Por que conferir o estado final e não a sequência de chamadas?** O que importa para a empresa é o que mudou no sistema. Dois caminhos podem estar certos (listar antes ou consultar antes), e uma chamada "certa" pode vir com efeito colateral. O corretor compara o banco inteiro, então cancelar o 1042 *e* o 1043 reprova (teste `test_side_effect_is_caught_even_if_task_effect_happened`).
+2. **Por que Pass^k e não só acurácia?** Em produção a mesma situação se repete milhares de vezes. 80% por tentativa vira 41% em 4 seguidas (0,8⁴). O Pass^4 mostra a consistência que a média esconde.
+3. **Como você sabe que o gabarito está certo?** Três camadas: (a) teste de formato (ferramentas existem, gabarito cabe em 8 passos, não usa proibida); (b) o oracle executa o gabarito no mundo e precisa dar 100% (deu, nos dois agentes); (c) o naive precisa dar perto de 0% (deu 0%). Tudo roda no CI. Correções vão para `docs/ERRATA.md` com versão do dataset.
+4. **A diferença entre os modelos é real? Qual o intervalo?** *Pendente de rodar modelos reais.* A ferramenta: `python -m toolbr table --comparar A.json B.json` faz bootstrap pareado por tarefa e só chama de "diferença real" se o intervalo não incluir zero. Na busca, por exemplo, embeddings tiveram MRR 0,13 maior que o BM25, mas o intervalo foi de −0,08 a +0,32: sem diferença comprovada.
+5. **O LangGraph ajudou? Com que número?** *Pendente com modelo real.* Com os modelos de teste a diferença é zero por construção (mesma nota, passos e chamadas em teste), o que prova que a comparação está justa: só a orquestração muda.
+6. **Qual defesa contra injection funcionou e quanto ela custou em utilidade?** Com os modelos de teste: o portão de proveniência corta o ASR do vulnerable de 100% para 25% (os 3 casos de limitação documentada), sem perder utilidade nas 25 tarefas (oracle continua 100%). O delimitar só pode ser medido com LLM real. *Pendente: os números com LLM real.*
+7. **Quanto custou rodar tudo?** Até agora, US$ 0: modelos de teste e embeddings locais. Para um modelo real, `--estimar` dá cerca de 208 chamadas e 319 mil tokens de entrada para as 25 tarefas com k = 4. O custo em US$ só aparece com preço preenchido à mão em `data/precos.yaml`.
+8. **Como uma empresa usaria isso no CI dela?** O CI do ToolBR já roda `python -m toolbr gate` a cada push. Uma empresa roda as tarefas com o próprio prompt ou modelo, guarda o JSON da versão atual como linha de base e falha o PR se `table --comparar` mostrar queda significativa. A v0.3 traz a interface "traga seu agente".
+9. **O que você faria na próxima versão?** v0.2: cliente simulado por LLM em várias rodadas (com auditoria de 20 conversas), 60 a 100 tarefas, conjunto de teste escondido com frase-marcador, rastreio OpenTelemetry GenAI, dataset no Hugging Face e LLM juiz para a resposta. v0.3: "traga seu agente", mundos jurídico, Pix e nota fiscal.
+10. **Como isso se compara com τ²-bench e BFCL?** O τ²-bench é maior, tem cliente simulado que também age no sistema e é a referência em estado final e Pass^k; o ToolBR pega o método e adiciona português, domínios brasileiros, segurança e comparação de frameworks. O BFCL mede muita variedade de chamadas (inclusive ferramenta irrelevante) mas não estado com política de negócio; o ToolBR pega a ideia de ferramenta irrelevante e que falha.
