@@ -119,13 +119,13 @@ Os modelos de teste não medem capacidade: provam que o gabarito e o corretor fu
 
 | Modelo | Agente | k | Sucesso | Pass^4 | Comando | Arquivo |
 |---|---|---|---|---|---|---|
-| oracle | loop | 4 | 100% | 100% | `python -m toolbr run --modelo oracle --k 4` | [`tarefas_oracle_loop_20261104-001851.json`](results/tarefas_oracle_loop_20261104-001851.json) |
-| oracle | langgraph | 4 | 100% | 100% | `python -m toolbr run --modelo oracle --agente langgraph --k 4` | [`tarefas_oracle_langgraph_20261104-001854.json`](results/tarefas_oracle_langgraph_20261104-001854.json) |
-| naive | loop | 4 | 0% | 0% | `python -m toolbr run --modelo naive --k 4` | [`tarefas_naive_loop_20261104-001852.json`](results/tarefas_naive_loop_20261104-001852.json) |
+| oracle | loop | 4 | 100% | 100% | `python -m toolbr run --modelo oracle --k 4` | [`tarefas_oracle_loop_20261104-171111.json`](results/tarefas_oracle_loop_20261104-171111.json) |
+| oracle | langgraph | 4 | 100% | 100% | `python -m toolbr run --modelo oracle --agente langgraph --k 4` | [`tarefas_oracle_langgraph_20261104-171113.json`](results/tarefas_oracle_langgraph_20261104-171113.json) |
+| naive | loop | 4 | 0% | 0% | `python -m toolbr run --modelo naive --k 4` | [`tarefas_naive_loop_20261104-171111.json`](results/tarefas_naive_loop_20261104-171111.json) |
 
 ### Busca nas políticas (15 perguntas, 22 trechos)
 
-Comando: `python -m toolbr rag-eval`. Arquivo: [`busca_20261104-001858.json`](results/busca_20261104-001858.json).
+Comando: `python -m toolbr rag-eval`. Arquivo: [`busca_20261104-171115.json`](results/busca_20261104-171115.json).
 
 | Método | recall@1 | recall@3 | recall@5 | MRR [IC 95%] |
 |---|---|---|---|---|
@@ -136,7 +136,7 @@ MRR dos embeddings menos o do BM25: **+0,13 [IC 95%: −0,08 a +0,32], sem difer
 
 ### Segurança contra injection indireta (12 ataques)
 
-Medição com os modelos de teste, que valida o detector de ataque e o portão. Comando: `python -m toolbr security --modelo vulnerable`. Arquivo: [`seguranca_vulnerable_20261104-001858.json`](results/seguranca_vulnerable_20261104-001858.json). O `cautious`, que ignora instruções escondidas, dá ASR 0%: [`seguranca_cautious_20261104-001859.json`](results/seguranca_cautious_20261104-001859.json).
+Medição com os modelos de teste, que valida o detector de ataque e o portão. Comando: `python -m toolbr security --modelo vulnerable`. Arquivo: [`seguranca_vulnerable_20261104-171116.json`](results/seguranca_vulnerable_20261104-171116.json). O `cautious`, que ignora instruções escondidas, dá ASR 0%: [`seguranca_cautious_20261104-171116.json`](results/seguranca_cautious_20261104-171116.json).
 
 | Defesa (modelo `vulnerable`) | ASR [IC 95%] | Utilidade sob ataque | Utilidade nas 25 tarefas |
 |---|---|---|---|

@@ -149,7 +149,7 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
 
 ## Parte 10: README e resultados
 
-- **Decisão:** README com o que é em 1 frase, motivação, 1 comando (`uv run python -m toolbr gate`), diagrama, métricas, resultados (tabela de modelos reais **vazia** até rodar), comparação honesta e limitações. Cada número tem comando e arquivo em `results/`, gerado no commit `66252f3`, sem alteração pendente.
+- **Decisão:** README com o que é em 1 frase, motivação, 1 comando (`uv run python -m toolbr gate`), diagrama, métricas, resultados (tabela de modelos reais **vazia** até rodar), comparação honesta e limitações. Cada número tem comando e arquivo em `results/`, gerado no commit `77b535f`, sem alteração pendente.
 - **Pendente para fechar a v0.1:** rodar 2 modelos reais com k = 4 (precisa de chave no `.env` e do seu ok de custo) e preencher `data/precos.yaml`.
 
 ---
