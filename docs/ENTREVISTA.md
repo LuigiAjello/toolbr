@@ -75,3 +75,16 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
   - *Por que não usar temperatura 0 para reprodutibilidade?* Nos Claude atuais ela não existe mais na API; e, mesmo onde existe, temperatura 0 não garante determinismo. Por isso medimos Pass^k em vez de fingir que uma execução é reprodutível.
   - *O que acontece se o modelo mandar JSON inválido nos argumentos?* O adaptador repassa como argumento desconhecido; o mundo devolve erro estruturado e o modelo pode corrigir. Isso aparece no acerto de argumentos.
   - *Como você controla custo?* Estimativa antes, confirmação, cache de prompt e tokens registrados por episódio.
+
+---
+
+## Parte 5: agente em LangGraph
+
+- **Decisão:** grafo próprio no LangGraph 1.2 (`StateGraph` com estado `messages` + `steps`, nó do modelo, `ToolNode` e arestas condicionais), com ferramentas no formato LangChain (`StructuredTool`). O modelo é o mesmo objeto do loop próprio, embrulhado como `BaseChatModel`; as ferramentas passam pelo mesmo runtime (mesmas defesas e registro).
+- **Por quê:** a pergunta é "o framework muda algo?". Se cada agente usasse um cliente de API diferente (`ChatAnthropic` contra o SDK direto), a diferença misturaria orquestração com o adaptador do LangChain (formato das mensagens, tratamento de erro). Assim, a única variável é a orquestração.
+- **Alternativa descartada:** `create_agent` do pacote `langchain`. É o caminho "pronto", mas esconde o laço e o limite de passos; com grafo próprio dá para garantir o mesmo limite de 8 passos do loop e provar a equivalência em teste.
+- **Detalhes que importaram:** o `ToolNode` roda chamadas em paralelo, então o runtime ganhou uma trava no SQLite; o erro da ferramenta precisa chegar ao modelo como erro (`is_error`), por isso as ferramentas devolvem conteúdo + artefato; o `TypedDict` do estado fica no nível do módulo e o arquivo não usa `from __future__ import annotations`.
+- **Número que prova:** `uv run pytest tests/test_langgraph.py`: com roteiros idênticos, os dois agentes dão a mesma nota, os mesmos passos e as mesmas chamadas (inclusive no estouro do limite e no erro 503). `python -m toolbr gate`: oracle 100% e naive 0% nos dois agentes. **Pendente:** a diferença com modelo real.
+- **Perguntas que podem fazer:**
+  - *O LangGraph ajudou? Com que número?* Pendente de rodar modelo real. Com os modelos de teste, a diferença é zero por construção, o que prova que a comparação está justa. Com LLM real, qualquer diferença vem da orquestração e é reportada com intervalo pareado (`python -m toolbr table --comparar A.json B.json`).
+  - *Quando você usaria LangGraph em vez de um loop?* Quando o fluxo tem ramificações, pausa para humano, retomada com checkpoint ou vários agentes. Para um laço de tool calling simples, o loop é menor e mais fácil de depurar.

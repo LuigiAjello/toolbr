@@ -6,6 +6,7 @@ as mesmas ferramentas, a mesma defesa e o mesmo registro de chamadas.
 
 from __future__ import annotations
 
+import threading
 from typing import Any
 
 from toolbr.defenses import Defense
@@ -18,6 +19,8 @@ class ToolRuntime:
         self.world = world
         self.defense = defense
         self.records: list[CallRecord] = []
+        # o ToolNode do LangGraph roda chamadas em paralelo; o SQLite é um só
+        self._lock = threading.Lock()
         defense.start(world, trusted_text)
 
     def specs(self) -> list[ToolSpec]:
@@ -26,6 +29,10 @@ class ToolRuntime:
     def execute(self, name: str, args: dict[str, Any] | None) -> tuple[str, bool]:
         """Roda uma chamada e devolve (texto para o modelo, se é erro)."""
         args = args if isinstance(args, dict) else {}
+        with self._lock:
+            return self._execute(name, args)
+
+    def _execute(self, name: str, args: dict[str, Any]) -> tuple[str, bool]:
         reason = self.defense.before_call(self.world.spec(name), args)
         if reason:
             result = {"erro": f"ação bloqueada pela defesa: {reason}"}
