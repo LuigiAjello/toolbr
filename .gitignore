@@ -1,0 +1,23 @@
+# segredos: chaves de API ficam só aqui
+.env
+.env.*
+!.env.example
+
+# ambiente
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# saídas locais (resultados que vão para o README são adicionados com git add -f)
+results/*
+!results/.gitkeep
+mlflow.db
+mlruns/
+mlartifacts/
+.cache/
+
+# documentos pessoais (contexto do projeto, não vão para o repositório público)
+prompt.md
+*.pdf
