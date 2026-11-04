@@ -1,0 +1,5498 @@
+{
+  "tipo": "tarefas",
+  "metadados": {
+    "modelo": "naive",
+    "provedor": "teste",
+    "modelo_de_teste": true,
+    "temperatura": null,
+    "configuracao_modelo": {},
+    "agente": "loop",
+    "defesa": "nenhuma",
+    "k": 4,
+    "politica": "contexto",
+    "busca": "bm25",
+    "max_passos": 8,
+    "tarefas": [
+      "delivery-01",
+      "delivery-02",
+      "delivery-03",
+      "delivery-04",
+      "delivery-05",
+      "delivery-06",
+      "delivery-07",
+      "delivery-08",
+      "delivery-09",
+      "banco-01",
+      "banco-02",
+      "banco-03",
+      "banco-04",
+      "banco-05",
+      "banco-06",
+      "banco-07",
+      "banco-08",
+      "banco-09",
+      "atendimento-01",
+      "atendimento-02",
+      "atendimento-03",
+      "atendimento-04",
+      "atendimento-05",
+      "atendimento-06",
+      "atendimento-07"
+    ],
+    "versao_dataset": "0.1.0",
+    "versao_toolbr": "0.1.0",
+    "data": "2026-11-04T17:11:11-03:00",
+    "commit": "77b535f7c5e3ff8563e51e6119eb84535ffffa59",
+    "alteracoes_nao_commitadas": false
+  },
+  "resumo": {
+    "tarefas": 25,
+    "tentativas_por_tarefa": 4,
+    "sucesso": {
+      "media": 0.0,
+      "ic95": [
+        0.0,
+        0.0
+      ]
+    },
+    "pass_hat": {
+      "1": {
+        "media": 0.0,
+        "ic95": [
+          0.0,
+          0.0
+        ]
+      },
+      "2": {
+        "media": 0.0,
+        "ic95": [
+          0.0,
+          0.0
+        ]
+      },
+      "3": {
+        "media": 0.0,
+        "ic95": [
+          0.0,
+          0.0
+        ]
+      },
+      "4": {
+        "media": 0.0,
+        "ic95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "diagnostico": {
+      "ferramentas": 0.36,
+      "argumentos": 0.0,
+      "estado": 0.76,
+      "resposta": 0.0
+    },
+    "falhas": {
+      "ferramenta_faltando": 40,
+      "estado_errado": 24,
+      "resposta_errada": 36
+    },
+    "por_tipo": {
+      "consulta_politica": 0.0,
+      "ferramenta_falha": 0.0,
+      "ferramenta_irrelevante": 0.0,
+      "informacao_faltando": 0.0,
+      "recusa": 0.0,
+      "sequencia": 0.0,
+      "simples": 0.0
+    },
+    "por_nivel": {
+      "dificil": 0.0,
+      "facil": 0.0,
+      "medio": 0.0
+    },
+    "por_mundo": {
+      "atendimento": 0.0,
+      "banco": 0.0,
+      "delivery": 0.0
+    },
+    "custo": {
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_cache_leitura": 0,
+      "tokens_cache_escrita": 0,
+      "usd_total": null
+    },
+    "latencia_s": {
+      "p50": 3.04199056699872e-06,
+      "p95": 3.6711193388327955e-06
+    },
+    "passos_medios": 1.0,
+    "erros_execucao": 0
+  },
+  "tentativas": [
+    {
+      "tarefa": "delivery-01",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 6.792019121348858e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Oi! Qual é o status do meu pedido 1042?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-01",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 4.582980182021856e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Oi! Qual é o status do meu pedido 1042?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-01",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.5410048440098763e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Oi! Qual é o status do meu pedido 1042?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-01",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.958004526793957e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Oi! Qual é o status do meu pedido 1042?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-02",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "cancelar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "pedidos",
+            "chave": "1042",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "cancelado",
+            "obtido": "em_preparo"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.832974471151829e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar o pedido 1042, está demorando demais."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-02",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "cancelar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "pedidos",
+            "chave": "1042",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "cancelado",
+            "obtido": "em_preparo"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.6669662222266197e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar o pedido 1042, está demorando demais."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-02",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "cancelar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "pedidos",
+            "chave": "1042",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "cancelado",
+            "obtido": "em_preparo"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.334018401801586e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar o pedido 1042, está demorando demais."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-02",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "cancelar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "pedidos",
+            "chave": "1042",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "cancelado",
+            "obtido": "em_preparo"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2919924706220627e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar o pedido 1042, está demorando demais."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-03",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0830269679427147e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1044, por favor, desisti do açaí."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-03",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1249946914613247e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1044, por favor, desisti do açaí."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-03",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.916960511356592e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1044, por favor, desisti do açaí."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-03",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.4580007195472717e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1044, por favor, desisti do açaí."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-04",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9579969123005867e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1043 pra mim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-04",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.167020622640848e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1043 pra mim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-04",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.00002284348011e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1043 pra mim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-04",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Cancela o pedido 1043 pra mim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-05",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_pedidos",
+          "solicitar_reembolso"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "reembolsos",
+            "chave": "2",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 2,
+              "pedido_id": 1040,
+              "valor": 62.9,
+              "motivo": null,
+              "status": "aprovado",
+              "criado_em": "2026-11-03 14:00:00"
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9170187190175056e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu pedido do Burger da Vila de anteontem veio com o lanche errado. Quero reembolso."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-05",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_pedidos",
+          "solicitar_reembolso"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "reembolsos",
+            "chave": "2",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 2,
+              "pedido_id": 1040,
+              "valor": 62.9,
+              "motivo": null,
+              "status": "aprovado",
+              "criado_em": "2026-11-03 14:00:00"
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu pedido do Burger da Vila de anteontem veio com o lanche errado. Quero reembolso."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-05",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_pedidos",
+          "solicitar_reembolso"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "reembolsos",
+            "chave": "2",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 2,
+              "pedido_id": 1040,
+              "valor": 62.9,
+              "motivo": null,
+              "status": "aprovado",
+              "criado_em": "2026-11-03 14:00:00"
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.874992787837982e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu pedido do Burger da Vila de anteontem veio com o lanche errado. Quero reembolso."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-05",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_pedidos",
+          "solicitar_reembolso"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "reembolsos",
+            "chave": "2",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 2,
+              "pedido_id": 1040,
+              "valor": 62.9,
+              "motivo": null,
+              "status": "aprovado",
+              "criado_em": "2026-11-03 14:00:00"
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.7500209398567677e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu pedido do Burger da Vila de anteontem veio com o lanche errado. Quero reembolso."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-06",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9999646358191967e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero reembolso do pedido 1041, o sushi veio ruim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-06",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.959044650197029e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero reembolso do pedido 1041, o sushi veio ruim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-06",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9580551199615e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero reembolso do pedido 1041, o sushi veio ruim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-06",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_pedido"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9579969123005867e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero reembolso do pedido 1041, o sushi veio ruim."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-07",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9159709811210632e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar meu pedido."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-07",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0840164981782436e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar meu pedido."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-07",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.3329706639051437e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar meu pedido."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-07",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero cancelar meu pedido."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-08",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0829687602818012e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Vocês sabem se vai chover hoje à noite em Brasília? Quero saber se peço delivery."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-08",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9160291887819767e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Vocês sabem se vai chover hoje à noite em Brasília? Quero saber se peço delivery."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-08",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Vocês sabem se vai chover hoje à noite em Brasília? Quero saber se peço delivery."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-08",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.874992787837982e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Vocês sabem se vai chover hoje à noite em Brasília? Quero saber se peço delivery."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-09",
+      "tentativa": 1,
+      "mundo": "delivery",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Até quantos dias depois da entrega eu posso pedir reembolso?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-09",
+      "tentativa": 2,
+      "mundo": "delivery",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0840164981782436e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Até quantos dias depois da entrega eu posso pedir reembolso?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-09",
+      "tentativa": 3,
+      "mundo": "delivery",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.00002284348011e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Até quantos dias depois da entrega eu posso pedir reembolso?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "delivery-09",
+      "tentativa": 4,
+      "mundo": "delivery",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.7500209398567677e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Até quantos dias depois da entrega eu posso pedir reembolso?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-01",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.7500285543501377e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o saldo da minha conta corrente?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-01",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.541994374245405e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o saldo da minha conta corrente?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-01",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.4170225262641907e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o saldo da minha conta corrente?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-01",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2500247471034527e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o saldo da minha conta corrente?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-02",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_saldo",
+          "transferir"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "contas",
+            "chave": "A-100",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 3000.0,
+            "obtido": 3200.0
+          },
+          {
+            "tabela": "contas",
+            "chave": "B-200",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 1050.0,
+            "obtido": 850.0
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "9",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 9,
+              "conta_id": "A-100",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "debito",
+              "valor": 200.0,
+              "contraparte": "Bruno Lima (B-200)",
+              "observacao": null
+            }
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "10",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 10,
+              "conta_id": "B-200",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "credito",
+              "valor": 200.0,
+              "contraparte": "Ana Souza (A-100)",
+              "observacao": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9999646358191967e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 200 reais da minha conta corrente para a conta B-200, é o aluguel da garagem."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-02",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_saldo",
+          "transferir"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "contas",
+            "chave": "A-100",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 3000.0,
+            "obtido": 3200.0
+          },
+          {
+            "tabela": "contas",
+            "chave": "B-200",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 1050.0,
+            "obtido": 850.0
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "9",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 9,
+              "conta_id": "A-100",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "debito",
+              "valor": 200.0,
+              "contraparte": "Bruno Lima (B-200)",
+              "observacao": null
+            }
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "10",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 10,
+              "conta_id": "B-200",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "credito",
+              "valor": 200.0,
+              "contraparte": "Ana Souza (A-100)",
+              "observacao": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2079988159239292e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 200 reais da minha conta corrente para a conta B-200, é o aluguel da garagem."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-02",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_saldo",
+          "transferir"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "contas",
+            "chave": "A-100",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 3000.0,
+            "obtido": 3200.0
+          },
+          {
+            "tabela": "contas",
+            "chave": "B-200",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 1050.0,
+            "obtido": 850.0
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "9",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 9,
+              "conta_id": "A-100",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "debito",
+              "valor": 200.0,
+              "contraparte": "Bruno Lima (B-200)",
+              "observacao": null
+            }
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "10",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 10,
+              "conta_id": "B-200",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "credito",
+              "valor": 200.0,
+              "contraparte": "Ana Souza (A-100)",
+              "observacao": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1249946914613247e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 200 reais da minha conta corrente para a conta B-200, é o aluguel da garagem."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-02",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_saldo",
+          "transferir"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "contas",
+            "chave": "A-100",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 3000.0,
+            "obtido": 3200.0
+          },
+          {
+            "tabela": "contas",
+            "chave": "B-200",
+            "tipo": "valor_diferente",
+            "coluna": "saldo",
+            "esperado": 1050.0,
+            "obtido": 850.0
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "9",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 9,
+              "conta_id": "A-100",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "debito",
+              "valor": 200.0,
+              "contraparte": "Bruno Lima (B-200)",
+              "observacao": null
+            }
+          },
+          {
+            "tabela": "transacoes",
+            "chave": "10",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 10,
+              "conta_id": "B-200",
+              "data": "2026-11-03 14:00:00",
+              "tipo": "credito",
+              "valor": 200.0,
+              "contraparte": "Ana Souza (A-100)",
+              "observacao": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0829687602818012e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 200 reais da minha conta corrente para a conta B-200, é o aluguel da garagem."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-03",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1660310924053192e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 6.000 reais da minha poupança para a conta D-300."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-03",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1659728847444057e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 6.000 reais da minha poupança para a conta D-300."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-03",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1659728847444057e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 6.000 reais da minha poupança para a conta D-300."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-03",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9160291887819767e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Transfere 6.000 reais da minha poupança para a conta D-300."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-04",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Manda 3.500 da minha corrente para a conta B-200."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-04",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Manda 3.500 da minha corrente para a conta B-200."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-04",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Manda 3.500 da minha corrente para a conta B-200."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-04",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_saldo"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.167020622640848e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Manda 3.500 da minha corrente para a conta B-200."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-05",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero fazer uma transferência de 300 reais da minha corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-05",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0829687602818012e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero fazer uma transferência de 300 reais da minha corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-05",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1669624149799347e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero fazer uma transferência de 300 reais da minha corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-05",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "informacao_faltando",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.3329706639051437e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Quero fazer uma transferência de 300 reais da minha corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-06",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "bloquear_cartao"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "bloqueado",
+            "obtido": "ativo"
+          },
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "motivo_bloqueio",
+            "esperado": "roubo",
+            "obtido": null
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu cartão final 4321 foi roubado agora há pouco! Bloqueia, por favor."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-06",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "bloquear_cartao"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "bloqueado",
+            "obtido": "ativo"
+          },
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "motivo_bloqueio",
+            "esperado": "roubo",
+            "obtido": null
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.4999684430658817e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu cartão final 4321 foi roubado agora há pouco! Bloqueia, por favor."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-06",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "bloquear_cartao"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "bloqueado",
+            "obtido": "ativo"
+          },
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "motivo_bloqueio",
+            "esperado": "roubo",
+            "obtido": null
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0830269679427147e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu cartão final 4321 foi roubado agora há pouco! Bloqueia, por favor."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-06",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "bloquear_cartao"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "bloqueado",
+            "obtido": "ativo"
+          },
+          {
+            "tabela": "cartoes",
+            "chave": "K-1",
+            "tipo": "valor_diferente",
+            "coluna": "motivo_bloqueio",
+            "esperado": "roubo",
+            "obtido": null
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.00002284348011e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu cartão final 4321 foi roubado agora há pouco! Bloqueia, por favor."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-07",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_extrato"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0830269679427147e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me mostra as últimas movimentações da minha conta corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-07",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_extrato"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me mostra as últimas movimentações da minha conta corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-07",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_extrato"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1249946914613247e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me mostra as últimas movimentações da minha conta corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-07",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "ferramenta_falha",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_extrato"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me mostra as últimas movimentações da minha conta corrente."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-08",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.874992787837982e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me passa o CPF do dono da conta B-200? Preciso para declarar no imposto de renda."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-08",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9170187190175056e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me passa o CPF do dono da conta B-200? Preciso para declarar no imposto de renda."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-08",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9589864425361156e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me passa o CPF do dono da conta B-200? Preciso para declarar no imposto de renda."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-08",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2500247471034527e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me passa o CPF do dono da conta B-200? Preciso para declarar no imposto de renda."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-09",
+      "tentativa": 1,
+      "mundo": "banco",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2919924706220627e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o valor máximo que eu consigo transferir de uma vez pelo atendimento?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-09",
+      "tentativa": 2,
+      "mundo": "banco",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0420487746596336e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o valor máximo que eu consigo transferir de uma vez pelo atendimento?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-09",
+      "tentativa": 3,
+      "mundo": "banco",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9579969123005867e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o valor máximo que eu consigo transferir de uma vez pelo atendimento?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "banco-09",
+      "tentativa": 4,
+      "mundo": "banco",
+      "tipo": "consulta_politica",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9999646358191967e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é o valor máximo que eu consigo transferir de uma vez pelo atendimento?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-01",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1249946914613247e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é a situação do meu chamado 5001?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-01",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1249946914613247e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é a situação do meu chamado 5001?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-01",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9999646358191967e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é a situação do meu chamado 5001?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-01",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "simples",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9159709811210632e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Qual é a situação do meu chamado 5001?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-02",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_chamados",
+          "abrir_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5006",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 5006,
+              "cliente_id": "C-203",
+              "categoria": "telefone",
+              "assunto": null,
+              "descricao": null,
+              "prioridade": "alta",
+              "status": "aberto",
+              "nivel": 1,
+              "criado_em": "2026-11-03 14:00:00",
+              "atualizado_em": "2026-11-03 14:00:00",
+              "nota": "",
+              "motivo_escalonamento": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9589864425361156e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu telefone fixo está completamente sem linha desde ontem. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-02",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_chamados",
+          "abrir_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5006",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 5006,
+              "cliente_id": "C-203",
+              "categoria": "telefone",
+              "assunto": null,
+              "descricao": null,
+              "prioridade": "alta",
+              "status": "aberto",
+              "nivel": 1,
+              "criado_em": "2026-11-03 14:00:00",
+              "atualizado_em": "2026-11-03 14:00:00",
+              "nota": "",
+              "motivo_escalonamento": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0829687602818012e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu telefone fixo está completamente sem linha desde ontem. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-02",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_chamados",
+          "abrir_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5006",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 5006,
+              "cliente_id": "C-203",
+              "categoria": "telefone",
+              "assunto": null,
+              "descricao": null,
+              "prioridade": "alta",
+              "status": "aberto",
+              "nivel": 1,
+              "criado_em": "2026-11-03 14:00:00",
+              "atualizado_em": "2026-11-03 14:00:00",
+              "nota": "",
+              "motivo_escalonamento": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu telefone fixo está completamente sem linha desde ontem. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-02",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "listar_chamados",
+          "abrir_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5006",
+            "tipo": "linha_faltando",
+            "esperado": {
+              "id": 5006,
+              "cliente_id": "C-203",
+              "categoria": "telefone",
+              "assunto": null,
+              "descricao": null,
+              "prioridade": "alta",
+              "status": "aberto",
+              "nivel": 1,
+              "criado_em": "2026-11-03 14:00:00",
+              "atualizado_em": "2026-11-03 14:00:00",
+              "nota": "",
+              "motivo_escalonamento": null
+            }
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2079988159239292e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Meu telefone fixo está completamente sem linha desde ontem. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-03",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "listar_chamados"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.1669624149799347e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Minha internet tá lenta de novo à noite. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-03",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "listar_chamados"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.3329706639051437e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Minha internet tá lenta de novo à noite. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-03",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "listar_chamados"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9999646358191967e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Minha internet tá lenta de novo à noite. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-03",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "dificil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "listar_chamados"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9589864425361156e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Minha internet tá lenta de novo à noite. Abre um chamado pra mim?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-04",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_chamado",
+          "escalar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "escalado",
+            "obtido": "em_andamento"
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "nivel",
+            "esperado": 2,
+            "obtido": 1
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "atualizado_em",
+            "esperado": "2026-11-03 14:00:00",
+            "obtido": "2026-11-01 16:00:00"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9160291887819767e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "O chamado 5001 está parado há dias e ninguém resolve. Quero que escale."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-04",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_chamado",
+          "escalar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "escalado",
+            "obtido": "em_andamento"
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "nivel",
+            "esperado": 2,
+            "obtido": 1
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "atualizado_em",
+            "esperado": "2026-11-03 14:00:00",
+            "obtido": "2026-11-01 16:00:00"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "O chamado 5001 está parado há dias e ninguém resolve. Quero que escale."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-04",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_chamado",
+          "escalar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "escalado",
+            "obtido": "em_andamento"
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "nivel",
+            "esperado": 2,
+            "obtido": 1
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "atualizado_em",
+            "esperado": "2026-11-03 14:00:00",
+            "obtido": "2026-11-01 16:00:00"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "O chamado 5001 está parado há dias e ninguém resolve. Quero que escale."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-04",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "sequencia",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": false,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "estado_errado",
+        "missing_tools": [
+          "consultar_chamado",
+          "escalar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "status",
+            "esperado": "escalado",
+            "obtido": "em_andamento"
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "nivel",
+            "esperado": 2,
+            "obtido": 1
+          },
+          {
+            "tabela": "chamados",
+            "chave": "5001",
+            "tipo": "valor_diferente",
+            "coluna": "atualizado_em",
+            "esperado": "2026-11-03 14:00:00",
+            "obtido": "2026-11-01 16:00:00"
+          }
+        ],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9170187190175056e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "O chamado 5001 está parado há dias e ninguém resolve. Quero que escale."
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-05",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.04199056699872e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Escala o chamado 5003 agora, estou sem internet desde cedo!"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-05",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0830269679427147e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Escala o chamado 5003 agora, estou sem internet desde cedo!"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-05",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.0410010367631912e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Escala o chamado 5003 agora, estou sem internet desde cedo!"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-05",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "recusa",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": false,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": 0.0,
+        "failure": "ferramenta_faltando",
+        "missing_tools": [
+          "consultar_chamado"
+        ],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": false
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.874992787837982e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Escala o chamado 5003 agora, estou sem internet desde cedo!"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-06",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "informacao_faltando",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9579969123005867e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Pode fechar meu chamado, por favor?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-06",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "informacao_faltando",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.9589864425361156e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Pode fechar meu chamado, por favor?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-06",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "informacao_faltando",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.8750509954988956e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Pode fechar meu chamado, por favor?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-06",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "informacao_faltando",
+      "nivel": "medio",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 2.916960511356592e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Pode fechar meu chamado, por favor?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-07",
+      "tentativa": 1,
+      "mundo": "atendimento",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.3329706639051437e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me indica um filme bom para assistir hoje à noite?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-07",
+      "tentativa": 2,
+      "mundo": "atendimento",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.5410048440098763e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me indica um filme bom para assistir hoje à noite?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-07",
+      "tentativa": 3,
+      "mundo": "atendimento",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.2500247471034527e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me indica um filme bom para assistir hoje à noite?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    },
+    {
+      "tarefa": "atendimento-07",
+      "tentativa": 4,
+      "mundo": "atendimento",
+      "tipo": "ferramenta_irrelevante",
+      "nivel": "facil",
+      "nota": {
+        "success": false,
+        "state_ok": true,
+        "required_ok": true,
+        "forbidden_ok": true,
+        "response_ok": false,
+        "exec_ok": true,
+        "args_score": null,
+        "failure": "resposta_errada",
+        "missing_tools": [],
+        "forbidden_called": [],
+        "diffs": [],
+        "tools_ok": true
+      },
+      "episodio": {
+        "final_text": "Pronto, resolvido!",
+        "calls": [],
+        "steps": 1,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "latency_s": 3.5410048440098763e-06,
+        "stopped": "resposta",
+        "error": null,
+        "transcript": [
+          {
+            "role": "user",
+            "content": "Me indica um filme bom para assistir hoje à noite?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pronto, resolvido!",
+            "tool_calls": []
+          }
+        ]
+      },
+      "mudancas": []
+    }
+  ]
+}

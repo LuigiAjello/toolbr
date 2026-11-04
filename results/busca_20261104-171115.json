@@ -1,0 +1,433 @@
+{
+  "tipo": "busca",
+  "relatorios": [
+    {
+      "metodo": "bm25",
+      "perguntas": 15,
+      "recall@1": 0.6666666666666666,
+      "recall@3": 0.8666666666666667,
+      "recall@5": 1.0,
+      "mrr": 0.7744444444444445,
+      "mrr_ic95": [
+        0.6133333333333333,
+        0.9466666666666667
+      ],
+      "erros_no_top1": [
+        {
+          "pergunta": "Depois que o motoboy pegou minha comida, ainda dá para desistir do pedido?",
+          "trecho": "delivery:cancelamento",
+          "posicao": 5,
+          "top3": [
+            "delivery:pedido_nao_informado",
+            "delivery:status_dos_pedidos",
+            "delivery:identificacao_do_cliente"
+          ]
+        },
+        {
+          "pergunta": "Qual é o teto de valor para mandar dinheiro pelo chat?",
+          "trecho": "banco:limite_por_transferencia",
+          "posicao": 2,
+          "top3": [
+            "banco:saldo_e_extrato",
+            "banco:limite_por_transferencia",
+            "delivery:cancelamento"
+          ]
+        },
+        {
+          "pergunta": "O sistema caiu na hora de ver o extrato, o que o atendente deve fazer?",
+          "trecho": "banco:sistema_indisponivel",
+          "posicao": 3,
+          "top3": [
+            "banco:limite_por_transferencia",
+            "banco:saldo_e_extrato",
+            "banco:sistema_indisponivel"
+          ]
+        },
+        {
+          "pergunta": "Minha internet caiu totalmente, qual a urgência que meu chamado deve ter?",
+          "trecho": "atendimento:prioridade_do_chamado",
+          "posicao": 4,
+          "top3": [
+            "atendimento:fechamento_de_chamado",
+            "atendimento:abertura_de_chamado",
+            "atendimento:escopo_do_suporte"
+          ]
+        },
+        {
+          "pergunta": "Quando posso pedir para meu chamado ir para uma equipe mais especializada?",
+          "trecho": "atendimento:escalonamento_para_o_nivel_2",
+          "posicao": 3,
+          "top3": [
+            "atendimento:fechamento_de_chamado",
+            "atendimento:abertura_de_chamado",
+            "atendimento:escalonamento_para_o_nivel_2"
+          ]
+        }
+      ],
+      "detalhe": [
+        {
+          "pergunta": "Depois que o motoboy pegou minha comida, ainda dá para desistir do pedido?",
+          "trecho": "delivery:cancelamento",
+          "posicao": 5,
+          "top3": [
+            "delivery:pedido_nao_informado",
+            "delivery:status_dos_pedidos",
+            "delivery:identificacao_do_cliente"
+          ]
+        },
+        {
+          "pergunta": "Recebi o lanche errado faz 10 dias, ainda consigo meu dinheiro de volta?",
+          "trecho": "delivery:reembolso",
+          "posicao": 1,
+          "top3": [
+            "delivery:reembolso",
+            "banco:bloqueio_de_cartao",
+            "delivery:cancelamento"
+          ]
+        },
+        {
+          "pergunta": "Quanto tempo de demora conta como atraso grande?",
+          "trecho": "delivery:atraso_grande",
+          "posicao": 1,
+          "top3": [
+            "delivery:atraso_grande",
+            "banco:transferencias",
+            "delivery:reembolso"
+          ]
+        },
+        {
+          "pergunta": "O que fazer quando o cliente quer cancelar mas não fala o número do pedido?",
+          "trecho": "delivery:pedido_nao_informado",
+          "posicao": 1,
+          "top3": [
+            "delivery:pedido_nao_informado",
+            "delivery:cancelamento",
+            "delivery:status_dos_pedidos"
+          ]
+        },
+        {
+          "pergunta": "Posso mexer no pedido de outra pessoa se ela me pedir pelo chat?",
+          "trecho": "delivery:identificacao_do_cliente",
+          "posicao": 1,
+          "top3": [
+            "delivery:identificacao_do_cliente",
+            "atendimento:dados_pessoais",
+            "banco:dados_pessoais_e_lgpd"
+          ]
+        },
+        {
+          "pergunta": "Qual é o teto de valor para mandar dinheiro pelo chat?",
+          "trecho": "banco:limite_por_transferencia",
+          "posicao": 2,
+          "top3": [
+            "banco:saldo_e_extrato",
+            "banco:limite_por_transferencia",
+            "delivery:cancelamento"
+          ]
+        },
+        {
+          "pergunta": "Perdi minha carteira com o cartão dentro, o que acontece agora?",
+          "trecho": "banco:bloqueio_de_cartao",
+          "posicao": 1,
+          "top3": [
+            "banco:bloqueio_de_cartao",
+            "delivery:identificacao_do_cliente",
+            "delivery:status_dos_pedidos"
+          ]
+        },
+        {
+          "pergunta": "Posso descobrir o CPF de quem me fez um Pix?",
+          "trecho": "banco:dados_pessoais_e_lgpd",
+          "posicao": 1,
+          "top3": [
+            "banco:dados_pessoais_e_lgpd",
+            "delivery:identificacao_do_cliente",
+            "delivery:status_dos_pedidos"
+          ]
+        },
+        {
+          "pergunta": "O sistema caiu na hora de ver o extrato, o que o atendente deve fazer?",
+          "trecho": "banco:sistema_indisponivel",
+          "posicao": 3,
+          "top3": [
+            "banco:limite_por_transferencia",
+            "banco:saldo_e_extrato",
+            "banco:sistema_indisponivel"
+          ]
+        },
+        {
+          "pergunta": "Se não tiver dinheiro suficiente na conta corrente, dá para tirar da poupança?",
+          "trecho": "banco:transferencias",
+          "posicao": 1,
+          "top3": [
+            "banco:transferencias",
+            "banco:identificacao_e_escopo",
+            "atendimento:fechamento_de_chamado"
+          ]
+        },
+        {
+          "pergunta": "Vocês fazem empréstimo consignado por aqui?",
+          "trecho": "banco:assuntos_fora_do_escopo",
+          "posicao": 1,
+          "top3": [
+            "banco:assuntos_fora_do_escopo",
+            "delivery:identificacao_do_cliente",
+            "delivery:status_dos_pedidos"
+          ]
+        },
+        {
+          "pergunta": "Minha internet caiu totalmente, qual a urgência que meu chamado deve ter?",
+          "trecho": "atendimento:prioridade_do_chamado",
+          "posicao": 4,
+          "top3": [
+            "atendimento:fechamento_de_chamado",
+            "atendimento:abertura_de_chamado",
+            "atendimento:escopo_do_suporte"
+          ]
+        },
+        {
+          "pergunta": "Quando posso pedir para meu chamado ir para uma equipe mais especializada?",
+          "trecho": "atendimento:escalonamento_para_o_nivel_2",
+          "posicao": 3,
+          "top3": [
+            "atendimento:fechamento_de_chamado",
+            "atendimento:abertura_de_chamado",
+            "atendimento:escalonamento_para_o_nivel_2"
+          ]
+        },
+        {
+          "pergunta": "Já tenho um chamado sobre a TV, posso abrir outro igual?",
+          "trecho": "atendimento:abertura_de_chamado",
+          "posicao": 1,
+          "top3": [
+            "atendimento:abertura_de_chamado",
+            "atendimento:escopo_do_suporte",
+            "atendimento:dados_pessoais"
+          ]
+        },
+        {
+          "pergunta": "Como faço para encerrar um chamado que já foi resolvido?",
+          "trecho": "atendimento:fechamento_de_chamado",
+          "posicao": 1,
+          "top3": [
+            "atendimento:fechamento_de_chamado",
+            "atendimento:abertura_de_chamado",
+            "atendimento:escalonamento_para_o_nivel_2"
+          ]
+        }
+      ]
+    },
+    {
+      "metodo": "embeddings (fastembed:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2)",
+      "perguntas": 15,
+      "recall@1": 0.8,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "mrr": 0.9,
+      "mrr_ic95": [
+        0.8,
+        1.0
+      ],
+      "erros_no_top1": [
+        {
+          "pergunta": "O que fazer quando o cliente quer cancelar mas não fala o número do pedido?",
+          "trecho": "delivery:pedido_nao_informado",
+          "posicao": 2,
+          "top3": [
+            "delivery:cancelamento",
+            "delivery:pedido_nao_informado",
+            "atendimento:fechamento_de_chamado"
+          ]
+        },
+        {
+          "pergunta": "Vocês fazem empréstimo consignado por aqui?",
+          "trecho": "banco:assuntos_fora_do_escopo",
+          "posicao": 2,
+          "top3": [
+            "banco:transferencias",
+            "banco:assuntos_fora_do_escopo",
+            "delivery:reembolso"
+          ]
+        },
+        {
+          "pergunta": "Quando posso pedir para meu chamado ir para uma equipe mais especializada?",
+          "trecho": "atendimento:escalonamento_para_o_nivel_2",
+          "posicao": 2,
+          "top3": [
+            "atendimento:prioridade_do_chamado",
+            "atendimento:escalonamento_para_o_nivel_2",
+            "delivery:assuntos_fora_do_escopo"
+          ]
+        }
+      ],
+      "detalhe": [
+        {
+          "pergunta": "Depois que o motoboy pegou minha comida, ainda dá para desistir do pedido?",
+          "trecho": "delivery:cancelamento",
+          "posicao": 1,
+          "top3": [
+            "delivery:cancelamento",
+            "banco:sistema_indisponivel",
+            "delivery:pedido_nao_informado"
+          ]
+        },
+        {
+          "pergunta": "Recebi o lanche errado faz 10 dias, ainda consigo meu dinheiro de volta?",
+          "trecho": "delivery:reembolso",
+          "posicao": 1,
+          "top3": [
+            "delivery:reembolso",
+            "banco:bloqueio_de_cartao",
+            "banco:transferencias"
+          ]
+        },
+        {
+          "pergunta": "Quanto tempo de demora conta como atraso grande?",
+          "trecho": "delivery:atraso_grande",
+          "posicao": 1,
+          "top3": [
+            "delivery:atraso_grande",
+            "atendimento:escalonamento_para_o_nivel_2",
+            "delivery:reembolso"
+          ]
+        },
+        {
+          "pergunta": "O que fazer quando o cliente quer cancelar mas não fala o número do pedido?",
+          "trecho": "delivery:pedido_nao_informado",
+          "posicao": 2,
+          "top3": [
+            "delivery:cancelamento",
+            "delivery:pedido_nao_informado",
+            "atendimento:fechamento_de_chamado"
+          ]
+        },
+        {
+          "pergunta": "Posso mexer no pedido de outra pessoa se ela me pedir pelo chat?",
+          "trecho": "delivery:identificacao_do_cliente",
+          "posicao": 1,
+          "top3": [
+            "delivery:identificacao_do_cliente",
+            "delivery:pedido_nao_informado",
+            "atendimento:fechamento_de_chamado"
+          ]
+        },
+        {
+          "pergunta": "Qual é o teto de valor para mandar dinheiro pelo chat?",
+          "trecho": "banco:limite_por_transferencia",
+          "posicao": 1,
+          "top3": [
+            "banco:limite_por_transferencia",
+            "banco:saldo_e_extrato",
+            "delivery:reembolso"
+          ]
+        },
+        {
+          "pergunta": "Perdi minha carteira com o cartão dentro, o que acontece agora?",
+          "trecho": "banco:bloqueio_de_cartao",
+          "posicao": 1,
+          "top3": [
+            "banco:bloqueio_de_cartao",
+            "delivery:reembolso",
+            "banco:transferencias"
+          ]
+        },
+        {
+          "pergunta": "Posso descobrir o CPF de quem me fez um Pix?",
+          "trecho": "banco:dados_pessoais_e_lgpd",
+          "posicao": 1,
+          "top3": [
+            "banco:dados_pessoais_e_lgpd",
+            "banco:bloqueio_de_cartao",
+            "delivery:atraso_grande"
+          ]
+        },
+        {
+          "pergunta": "O sistema caiu na hora de ver o extrato, o que o atendente deve fazer?",
+          "trecho": "banco:sistema_indisponivel",
+          "posicao": 1,
+          "top3": [
+            "banco:sistema_indisponivel",
+            "delivery:atraso_grande",
+            "delivery:assuntos_fora_do_escopo"
+          ]
+        },
+        {
+          "pergunta": "Se não tiver dinheiro suficiente na conta corrente, dá para tirar da poupança?",
+          "trecho": "banco:transferencias",
+          "posicao": 1,
+          "top3": [
+            "banco:transferencias",
+            "banco:saldo_e_extrato",
+            "banco:assuntos_fora_do_escopo"
+          ]
+        },
+        {
+          "pergunta": "Vocês fazem empréstimo consignado por aqui?",
+          "trecho": "banco:assuntos_fora_do_escopo",
+          "posicao": 2,
+          "top3": [
+            "banco:transferencias",
+            "banco:assuntos_fora_do_escopo",
+            "delivery:reembolso"
+          ]
+        },
+        {
+          "pergunta": "Minha internet caiu totalmente, qual a urgência que meu chamado deve ter?",
+          "trecho": "atendimento:prioridade_do_chamado",
+          "posicao": 1,
+          "top3": [
+            "atendimento:prioridade_do_chamado",
+            "delivery:dados_pessoais",
+            "atendimento:escalonamento_para_o_nivel_2"
+          ]
+        },
+        {
+          "pergunta": "Quando posso pedir para meu chamado ir para uma equipe mais especializada?",
+          "trecho": "atendimento:escalonamento_para_o_nivel_2",
+          "posicao": 2,
+          "top3": [
+            "atendimento:prioridade_do_chamado",
+            "atendimento:escalonamento_para_o_nivel_2",
+            "delivery:assuntos_fora_do_escopo"
+          ]
+        },
+        {
+          "pergunta": "Já tenho um chamado sobre a TV, posso abrir outro igual?",
+          "trecho": "atendimento:abertura_de_chamado",
+          "posicao": 1,
+          "top3": [
+            "atendimento:abertura_de_chamado",
+            "atendimento:escopo_do_suporte",
+            "atendimento:fechamento_de_chamado"
+          ]
+        },
+        {
+          "pergunta": "Como faço para encerrar um chamado que já foi resolvido?",
+          "trecho": "atendimento:fechamento_de_chamado",
+          "posicao": 1,
+          "top3": [
+            "atendimento:fechamento_de_chamado",
+            "delivery:cancelamento",
+            "atendimento:escalonamento_para_o_nivel_2"
+          ]
+        }
+      ]
+    }
+  ],
+  "diferenca_mrr": {
+    "tarefas": 15,
+    "diferenca": 0.12555555555555556,
+    "ic95": [
+      -0.08333333333333333,
+      0.31777777777777777
+    ],
+    "significativa": false
+  },
+  "metadados_execucao": {
+    "data": "2026-11-04T17:11:15-03:00",
+    "versao_dataset": "0.1.0",
+    "versao_toolbr": "0.1.0",
+    "commit": "77b535f7c5e3ff8563e51e6119eb84535ffffa59",
+    "alteracoes_nao_commitadas": false
+  }
+}
