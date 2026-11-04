@@ -9,7 +9,7 @@ from typing import Any
 from toolbr.agents.prompt import build_system_prompt, trusted_text
 from toolbr.agents.runtime import ToolRuntime
 from toolbr.defenses import make_defense
-from toolbr.grader import grade
+from toolbr.grader import grade, state_changes
 from toolbr.models.base import Model
 from toolbr.tasks import Task
 from toolbr.worlds import make_world
@@ -42,6 +42,7 @@ def run_trial(
         "nivel": task.level,
         "nota": nota.to_dict(),
         "episodio": episode.to_dict(),
+        "mudancas": state_changes(initial, final),
         "estado_inicial": initial,
         "estado_final": final,
     }

@@ -107,6 +107,27 @@ def compare_states(expected: Snapshot, actual: Snapshot, world: World) -> list[d
     return diffs
 
 
+def state_changes(before: Snapshot, after: Snapshot) -> list[dict[str, Any]]:
+    """O que de fato mudou no banco (todas as colunas), para mostrar antes e depois."""
+    changes = []
+    for table in before:
+        old_rows, new_rows = before[table], after.get(table, {})
+        for key in sorted(set(old_rows) | set(new_rows), key=lambda k: (len(k), k)):
+            old, new = old_rows.get(key), new_rows.get(key)
+            if old == new:
+                continue
+            if old is None:
+                changes.append({"tabela": table, "chave": key, "tipo": "inserida", "depois": new})
+            elif new is None:
+                changes.append({"tabela": table, "chave": key, "tipo": "apagada", "antes": old})
+            else:
+                cols = {
+                    c: {"antes": old[c], "depois": new.get(c)} for c in old if old[c] != new.get(c)
+                }
+                changes.append({"tabela": table, "chave": key, "tipo": "alterada", "colunas": cols})
+    return changes
+
+
 def _arg_matches(expected: Any, actual: Any) -> bool:
     if actual is None:
         return False

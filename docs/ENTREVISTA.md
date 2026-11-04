@@ -37,8 +37,8 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
 - **Decisão:** 25 tarefas em `data/tarefas.yaml` (delivery 9, banco 9, atendimento 7): simples 4, sequência 4, recusa 8, informação faltando 3, ferramenta irrelevante 2, ferramenta que falha 2, consulta à política 2. Níveis: 10 fáceis, 10 médias, 5 difíceis. O gabarito é a lista ordenada de chamadas (`argumentos_esperados`), mais os efeitos no banco e uma resposta de referência.
 - **Por quê:** recusa é o tipo mais frequente porque é onde agente em produção causa prejuízo (cancelar o que não podia, transferir acima do limite, passar CPF de terceiro).
 - **Alternativa descartada:** checar a resposta com um LLM juiz. Fica para a v0.2; na v0.1 o casamento é determinístico, por palavra inteira, sem acento, com alternativas e um casador de valores em reais (`{valor: 62.90}` aceita "62,90" e "R$ 62,90").
-- **Regra que a auditoria criou:** quando o efeito esperado é "nada muda", `resposta_deve_conter` é obrigatório. Sem isso, o naive (não faz nada e diz "resolvido") acertaria o estado de 15 das 25 tarefas.
-- **Número que prova:** `uv run pytest tests/test_tasks.py`: para cada tarefa, a resposta de referência passa e "Pronto, resolvido!" é reprovado em todas as 15 tarefas sem mudança de estado.
+- **Regra que a auditoria criou:** quando o efeito esperado é "nada muda", `resposta_deve_conter` é obrigatório. Sem isso, o naive (não faz nada e diz "resolvido") acertaria o estado de 19 das 25 tarefas.
+- **Número que prova:** `uv run pytest tests/test_tasks.py`: para cada tarefa, a resposta de referência passa e "Pronto, resolvido!" é reprovado em todas as 19 tarefas sem mudança de estado.
 - **Perguntas que podem fazer:**
   - *Casamento por palavra não é frágil?* É; por isso as listas de alternativas são generosas e a nota principal é o estado do banco. A resposta só desempata quando o estado não muda.
   - *Como você evita gabarito impossível?* Cada tarefa é testada: ferramentas do gabarito existem no mundo, o gabarito cabe no limite de 8 passos e não usa ferramenta proibida. Na Parte 3, o oracle executa o gabarito e o corretor precisa dar 100%.
@@ -59,3 +59,19 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
   - *Por que Pass^k e não só acurácia?* Um agente com 80% de acerto por tentativa acerta 4 seguidas só 41% das vezes (0,8⁴). Em produção, o cliente é atendido muitas vezes.
   - *Como você sabe que o gabarito está certo?* O oracle executa o gabarito no mundo de verdade e o corretor precisa dar 100%. Se algum efeito esperado estiver errado, o portão quebra. O naive precisa dar perto de 0%; se passar, o corretor está frouxo. Os dois rodam no CI.
   - *Por que sortear tarefas e não tentativas no bootstrap?* As 4 tentativas da mesma tarefa são correlacionadas. Sortear tentativas finge que há 100 observações independentes quando há 25, e o intervalo fica estreito demais.
+
+---
+
+## Parte 4: adaptadores, executor e CLI
+
+- **Decisão:** uma interface de modelo (`complete(system, histórico, ferramentas)`) com histórico neutro; adaptadores para Anthropic (SDK oficial, Messages API), OpenAI (Chat Completions) e Ollama (mesma API da OpenAI em `localhost:11434/v1`). Resultado em `results/*.json` com metadados: modelo, provedor, agente, defesa, temperatura, effort, k, política, limite de passos, versão do dataset, data, commit do git e se havia alteração não commitada.
+- **Por quê:** o agente não conhece o provedor; trocar de modelo não muda uma linha do loop, e o mesmo histórico serve ao LangGraph.
+- **Decisões de API (conferidas no SDK instalado):** o SDK da Anthropic envia a versão `2026-10-21`, que rejeita `temperature` com erro 400; o adaptador recusa temperatura com mensagem clara e registra o `effort`. Sem fallback automático de modelo em recusa, porque a nota iria para o modelo errado. Cache de prompt automático, já que sistema e ferramentas se repetem. Na OpenAI, os tokens em cache vêm dentro de `prompt_tokens`; separo para não cobrar duas vezes.
+- **Gasto controlado:** `--estimar` mostra episódios, chamadas e tokens antes de rodar; modelo real pede confirmação; preço só de `data/precos.yaml` (vazio até você preencher).
+- **LGPD:** CPF é mascarado em tudo que vai para o disco.
+- **Alternativa descartada:** LiteLLM como camada única de provedores. Economiza código, mas esconde exatamente o que um benchmark de tool calling precisa controlar: formato das mensagens, cache, blocos de raciocínio e recusa.
+- **Número que prova:** `python -m toolbr run --modelo claude-sonnet-5-5 --estimar` → 100 episódios, cerca de 208 chamadas, cerca de 319 mil tokens de entrada (estimativa, não medição).
+- **Perguntas que podem fazer:**
+  - *Por que não usar temperatura 0 para reprodutibilidade?* Nos Claude atuais ela não existe mais na API; e, mesmo onde existe, temperatura 0 não garante determinismo. Por isso medimos Pass^k em vez de fingir que uma execução é reprodutível.
+  - *O que acontece se o modelo mandar JSON inválido nos argumentos?* O adaptador repassa como argumento desconhecido; o mundo devolve erro estruturado e o modelo pode corrigir. Isso aparece no acerto de argumentos.
+  - *Como você controla custo?* Estimativa antes, confirmação, cache de prompt e tokens registrados por episódio.

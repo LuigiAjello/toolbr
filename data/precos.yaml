@@ -1,0 +1,14 @@
+# Preços em US$ por 1 milhão de tokens, preenchidos À MÃO a partir da página oficial
+# de cada provedor, com a fonte e a data da consulta.
+# Sem preço aqui, o custo sai como "sem preço": o ToolBR nunca inventa preço.
+#
+# Formato:
+# modelos:
+#   <id do modelo, igual ao usado em --modelo>:
+#     entrada: 0.00
+#     saida: 0.00
+#     cache_leitura: 0.00   # opcional
+#     cache_escrita: 0.00   # opcional
+#     fonte: https://...
+#     consultado_em: AAAA-MM-DD
+modelos: {}
