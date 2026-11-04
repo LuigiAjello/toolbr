@@ -119,7 +119,10 @@ def dataset_version() -> str:
 
 
 def get_task(task_id: str) -> Task:
-    for task in load_tasks() + load_attacks():
+    pool = load_tasks()
+    if (DATA_DIR / "ataques.yaml").exists():
+        pool += load_attacks()
+    for task in pool:
         if task.id == task_id:
             return task
     raise KeyError(f"tarefa não encontrada: {task_id}")

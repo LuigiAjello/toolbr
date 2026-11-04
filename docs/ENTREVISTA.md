@@ -43,3 +43,19 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
   - *Casamento por palavra não é frágil?* É; por isso as listas de alternativas são generosas e a nota principal é o estado do banco. A resposta só desempata quando o estado não muda.
   - *Como você evita gabarito impossível?* Cada tarefa é testada: ferramentas do gabarito existem no mundo, o gabarito cabe no limite de 8 passos e não usa ferramenta proibida. Na Parte 3, o oracle executa o gabarito e o corretor precisa dar 100%.
   - *25 tarefas não é pouco?* É. Com 25, um acerto de 80% tem intervalo de mais ou menos 15 pontos; a v0.2 vai para 60 a 100.
+
+---
+
+## Parte 3: corretor, métricas e portão
+
+- **Decisão:** estado esperado = estado inicial + efeitos da tarefa; o corretor compara o banco **inteiro** com esse estado, ignorando só colunas de texto livre escritas pelo modelo (motivo, descrição, assunto). Sucesso = estado certo + ferramentas obrigatórias + nenhuma proibida + resposta certa + sem erro de execução nem estouro de passos. O motivo da falha é classificado (erro_execucao, limite_passos, ferramenta_proibida, estado_errado, ferramenta_faltando, resposta_errada).
+- **Por quê:** comparar o banco inteiro pega efeito colateral (cancelar o 1042 *e* o 1043). Ignorar texto livre evita reprovar quem escreveu "lanche errado" em vez de "Lanche errado".
+- **Alternativa descartada:** comparar a sequência de chamadas com o gabarito. Reprovaria caminhos corretos e diferentes (consultar antes ou listar antes), e aprovaria quem chamou certo mas deixou o banco errado.
+- **Pass^k:** estimador do τ-bench, C(c, k) / C(n, k) por tarefa, média entre tarefas, de Pass^1 a Pass^n.
+- **Intervalo de confiança:** bootstrap de 1.000 repetições sorteando **tarefas** (não tentativas), semente fixa.
+- **Número que prova:** `uv run pytest tests/test_grader.py tests/test_gate.py`. Oracle = **100%** (25/25) e naive = **0%** (0/25) no loop próprio. Com 20 de 25 tarefas certas, o intervalo sai de 64% a 96%, como no documento de visão.
+- **Perguntas que podem fazer:**
+  - *Por que conferir o estado final e não a sequência de chamadas?* Porque o que importa para a empresa é o que mudou no sistema. Dois caminhos diferentes podem estar certos, e uma chamada "certa" pode vir acompanhada de um efeito colateral.
+  - *Por que Pass^k e não só acurácia?* Um agente com 80% de acerto por tentativa acerta 4 seguidas só 41% das vezes (0,8⁴). Em produção, o cliente é atendido muitas vezes.
+  - *Como você sabe que o gabarito está certo?* O oracle executa o gabarito no mundo de verdade e o corretor precisa dar 100%. Se algum efeito esperado estiver errado, o portão quebra. O naive precisa dar perto de 0%; se passar, o corretor está frouxo. Os dois rodam no CI.
+  - *Por que sortear tarefas e não tentativas no bootstrap?* As 4 tentativas da mesma tarefa são correlacionadas. Sortear tentativas finge que há 100 observações independentes quando há 25, e o intervalo fica estreito demais.
