@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Se usar o ToolBR, cite assim."
+title: "ToolBR: benchmark de tool calling em português checado pelo estado final"
+type: software
+authors:
+  - family-names: Ajello
+    given-names: Luigi
+version: 0.1.0
+date-released: 2026-11-04
+license: MIT
+keywords:
+  - benchmark
+  - tool calling
+  - agentes
+  - avaliação de LLM
+  - português
+  - prompt injection

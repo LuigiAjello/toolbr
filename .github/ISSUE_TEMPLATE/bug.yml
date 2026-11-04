@@ -1,0 +1,16 @@
+name: Bug
+description: Algo no código não funciona
+labels: ["bug"]
+body:
+  - type: textarea
+    id: oque
+    attributes:
+      label: O que aconteceu
+      description: O comando que você rodou, o que esperava e o que saiu (cole o erro).
+    validations:
+      required: true
+  - type: input
+    id: versao
+    attributes:
+      label: Versão e ambiente
+      placeholder: "commit abc1234, macOS 15, Python 3.12"

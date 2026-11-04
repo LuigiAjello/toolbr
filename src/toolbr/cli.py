@@ -227,6 +227,12 @@ def cmd_mcp(args) -> None:
         run_stdio(args.mundo)
 
 
+def cmd_dashboard(args) -> None:
+    from toolbr.dashboard import build_dashboard
+
+    print(f"Dashboard: {build_dashboard()}")
+
+
 def cmd_table(args) -> None:
     from toolbr.metrics import paired_difference
     from toolbr.paths import RESULTS_DIR
@@ -323,6 +329,9 @@ def build_parser() -> argparse.ArgumentParser:
     mcp.add_argument("--host", default="127.0.0.1")
     mcp.add_argument("--porta", type=int, default=8765)
     mcp.set_defaults(func=cmd_mcp)
+
+    dash = sub.add_parser("dashboard", help="gera docs/index.html com os resultados salvos")
+    dash.set_defaults(func=cmd_dashboard)
 
     gate = sub.add_parser("gate", help="portão de qualidade com os modelos de teste")
     gate.set_defaults(func=cmd_gate)

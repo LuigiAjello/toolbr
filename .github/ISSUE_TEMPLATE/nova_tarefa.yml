@@ -1,0 +1,25 @@
+name: Ideia de tarefa ou mundo
+description: Proponha uma tarefa nova ou um mundo brasileiro novo
+labels: ["dados"]
+body:
+  - type: input
+    id: mundo
+    attributes:
+      label: Mundo
+      placeholder: "banco, ou um mundo novo (Pix, nota fiscal, jurídico...)"
+    validations:
+      required: true
+  - type: textarea
+    id: pedido
+    attributes:
+      label: Pedido do cliente
+      description: O texto em português que o agente recebe.
+    validations:
+      required: true
+  - type: textarea
+    id: certo
+    attributes:
+      label: O comportamento certo
+      description: O que deve mudar no banco (ou não mudar), e qual regra da política decide isso.
+    validations:
+      required: true

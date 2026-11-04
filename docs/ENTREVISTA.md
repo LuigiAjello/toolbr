@@ -166,3 +166,17 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
 8. **Como uma empresa usaria isso no CI dela?** O CI do ToolBR já roda `python -m toolbr gate` a cada push. Uma empresa roda as tarefas com o próprio prompt ou modelo, guarda o JSON da versão atual como linha de base e falha o PR se `table --comparar` mostrar queda significativa. A v0.3 traz a interface "traga seu agente".
 9. **O que você faria na próxima versão?** v0.2: cliente simulado por LLM em várias rodadas (com auditoria de 20 conversas), 60 a 100 tarefas, conjunto de teste escondido com frase-marcador, rastreio OpenTelemetry GenAI, dataset no Hugging Face e LLM juiz para a resposta. v0.3: "traga seu agente", mundos jurídico, Pix e nota fiscal.
 10. **Como isso se compara com τ²-bench e BFCL?** O τ²-bench é maior, tem cliente simulado que também age no sistema e é a referência em estado final e Pass^k; o ToolBR pega o método e adiciona português, domínios brasileiros, segurança e comparação de frameworks. O BFCL mede muita variedade de chamadas (inclusive ferramenta irrelevante) mas não estado com política de negócio; o ToolBR pega a ideia de ferramenta irrelevante e que falha.
+
+---
+
+## Parte 11: dashboard e pacote open source
+
+- **Decisão:** dashboard como **uma página HTML estática** (`python -m toolbr dashboard` → `docs/index.html`), gerada a partir de `results/*.json`, sem servidor e sem carregar nada externo, pronta para o GitHub Pages. Seções: modelos reais (sucesso com intervalo, curva de Pass^k, motivo das falhas, mapa tarefa × modelo), segurança, busca e validação do corretor.
+- **Por quê:** um leaderboard que qualquer pessoa abre sem instalar nada e que se atualiza com um comando. **Modelos de teste nunca aparecem como modelos reais**: ficam só na seção de validação.
+- **Cuidados de visualização:** paleta validada por script para daltonismo nos modos claro e escuro; uma cor só quando há uma série; intervalo de confiança desenhado em toda barra de taxa; cada gráfico tem tabela equivalente; tooltip por teclado e mouse; rótulos de fim de linha só quando não colidem.
+- **Segurança da página:** os dados entram como JSON com todo `<` escapado (`<`), e os textos são inseridos com `textContent`. Um nome de modelo como `</script><script>...` não executa (teste `test_dashboard.py`).
+- **Alternativa descartada:** dashboard em Gradio ou Streamlit. Precisaria de servidor ligado para alguém ver os resultados; a página estática fica no próprio repositório.
+- **Pacote open source:** README com banner, badges, demo, resultados e resumo em inglês; `CONTRIBUTING.md` (como adicionar tarefa em 10 linhas de YAML), `CODE_OF_CONDUCT.md`, `SECURITY.md`, `CITATION.cff`, `CHANGELOG.md`, modelos de issue (bug, errata, tarefa nova) e de pull request, e `docs/ARQUITETURA.md` com uma tentativa explicada passo a passo.
+- **Perguntas que podem fazer:**
+  - *Por que o mapa tarefa × modelo?* Porque a média esconde onde o modelo erra. O mapa mostra, por exemplo, se um modelo cai sempre nas recusas por política e não nas tarefas simples.
+  - *Como o dashboard se mantém honesto?* Ele só lê os arquivos de resultado; não há número digitado. E mostra o estado vazio ("nenhum modelo real foi rodado ainda") em vez de esconder a seção.

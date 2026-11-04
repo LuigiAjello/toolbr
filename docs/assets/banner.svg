@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-labelledby="t d">
+  <title id="t">ToolBR</title>
+  <desc id="d">Benchmark de tool calling em português. O agente diz que cancelou o pedido, mas o banco mostra que o pedido continua em preparo: a tarefa não passa.</desc>
+  <rect width="1280" height="360" fill="#F3F6F5"/>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="72" y="132" font-size="88" font-weight="700" fill="#16263A" letter-spacing="-2">ToolBR</text>
+    <text x="76" y="182" font-size="26" fill="#4C5A68">Agentes de IA usam ferramentas direito em português?</text>
+    <text x="76" y="218" font-size="26" fill="#4C5A68">O corretor não acredita no agente: ele olha o banco.</text>
+    <text x="76" y="300" font-size="18" fill="#6F7B86">25 tarefas, 3 mundos, 12 ataques e Pass^k com intervalo de confiança</text>
+
+    <g transform="translate(760 56)">
+      <rect width="448" height="112" fill="#FFFFFF" stroke="#D5DEE2"/>
+      <text x="24" y="38" font-size="17" fill="#6F7B86">o agente disse</text>
+      <text x="24" y="80" font-size="24" fill="#16263A">“Pronto, o pedido 1042 foi cancelado!”</text>
+
+      <rect y="136" width="448" height="112" fill="#FFFFFF" stroke="#D5DEE2"/>
+      <rect y="136" width="6" height="112" fill="#B8322B"/>
+      <text x="24" y="174" font-size="17" fill="#6F7B86">o banco mostra</text>
+      <text x="24" y="214" font-size="19" fill="#16263A" font-family="ui-monospace, 'SF Mono', Menlo, monospace">pedidos[1042].status = em_preparo</text>
+      <text x="24" y="240" font-size="16" fill="#B8322B" font-weight="600">✗ não passou: o banco terminou errado</text>
+    </g>
+  </g>
+</svg>

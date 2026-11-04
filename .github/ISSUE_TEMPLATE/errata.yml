@@ -1,0 +1,23 @@
+name: Errata no gabarito
+description: Uma tarefa, efeito esperado, política ou ataque está errado
+labels: ["errata"]
+body:
+  - type: input
+    id: tarefa
+    attributes:
+      label: Tarefa ou arquivo
+      placeholder: "delivery-04, ou data/mundos/banco/politica.md"
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: O que está errado
+      description: O que o gabarito diz e o que deveria dizer, citando a regra da política.
+    validations:
+      required: true
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Evidência
+      description: Trecho da política, saída de `python -m toolbr run`, ou o arquivo de resultado.

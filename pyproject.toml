@@ -6,6 +6,16 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
 authors = [{ name = "Luigi Ajello" }]
+keywords = ["benchmark", "llm", "agents", "tool-calling", "evaluation", "portuguese", "prompt-injection", "mcp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Portuguese (Brazilian)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = ["pyyaml>=6.0"]
 
 [project.optional-dependencies]
