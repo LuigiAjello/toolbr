@@ -119,6 +119,7 @@ def cmd_run(args) -> None:
 
     tasks = _select_tasks(args)
     model = make_model(args.modelo, temperature=args.temperatura, effort=args.effort)
+    retrieval = _retrieval_method(args.busca)
     info = estimate(tasks, args.k, args.max_passos, model.name)
     if args.estimar:
         print(json.dumps(info, ensure_ascii=False, indent=2))
@@ -132,6 +133,7 @@ def cmd_run(args) -> None:
         defense_name=args.defesa,
         policy_mode=args.politica,
         workers=args.paralelo,
+        retrieval=retrieval,
         on_done=_progress,
     )
     summary = summarize(trials, load_prices(model.name))
@@ -141,6 +143,7 @@ def cmd_run(args) -> None:
         defesa=args.defesa,
         k=args.k,
         politica=args.politica,
+        busca=retrieval,
         max_passos=args.max_passos,
         tarefas=[t.id for t in tasks],
     )
@@ -150,6 +153,38 @@ def cmd_run(args) -> None:
         from toolbr.tracking import log_run
 
         log_run(metadata, summary, path)
+
+
+def _retrieval_method(choice: str) -> str:
+    from toolbr.rag_eval import DEFAULT_EMBEDDING
+
+    return DEFAULT_EMBEDDING if choice == "embeddings" else choice
+
+
+def cmd_rag_eval(args) -> None:
+    from toolbr.rag_eval import compare_methods, rag_table, run_rag_eval
+    from toolbr.results import save_json
+
+    model = None if args.so_bm25 else _retrieval_method(args.embedding)
+    reports = run_rag_eval(model)
+    print(rag_table(reports))
+    for r in reports:
+        print(f"\n{r['metodo']}: {len(r['erros_no_top1'])} perguntas fora do 1º lugar")
+        for e in r["erros_no_top1"]:
+            print(
+                f"  [{e['posicao']}º] {e['pergunta']}  (certo: {e['trecho']}; 1º: {e['top3'][0]})"
+            )
+    payload = {"tipo": "busca", "relatorios": reports}
+    if len(reports) == 2:
+        diff = compare_methods(reports[0], reports[1])
+        payload["diferenca_mrr"] = diff
+        lo, hi = diff["ic95"]
+        verdict = "diferença real" if diff["significativa"] else "sem diferença comprovada"
+        print(
+            f"\nMRR embeddings menos BM25: {diff['diferenca']:+.2f} "
+            f"[IC 95%: {lo:+.2f} a {hi:+.2f}] → {verdict}"
+        )
+    print(f"Resultado: {save_json(payload, 'busca')}")
 
 
 def cmd_table(args) -> None:
@@ -204,6 +239,7 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--tarefas", default="", help="ids separados por vírgula")
     run.add_argument("--defesa", default="nenhuma")
     run.add_argument("--politica", default="contexto", choices=["contexto", "busca"])
+    run.add_argument("--busca", default="bm25", help="bm25, embeddings ou fastembed:<modelo>")
     run.add_argument("--temperatura", type=float, default=None)
     run.add_argument("--effort", default=None, help="low, medium, high (quando o modelo aceita)")
     run.add_argument("--max-passos", type=int, default=8)
@@ -221,6 +257,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--comparar", nargs=2, metavar=("A.json", "B.json"), help="diferença pareada"
     )
     table.set_defaults(func=cmd_table)
+
+    rag = sub.add_parser("rag-eval", help="avalia a busca nas políticas (BM25 e embeddings)")
+    rag.add_argument(
+        "--embedding", default="embeddings", help="fastembed:<modelo> ou openai:<modelo>"
+    )
+    rag.add_argument("--so-bm25", action="store_true", help="não roda embeddings")
+    rag.set_defaults(func=cmd_rag_eval)
 
     gate = sub.add_parser("gate", help="portão de qualidade com os modelos de teste")
     gate.set_defaults(func=cmd_gate)

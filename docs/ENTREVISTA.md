@@ -88,3 +88,17 @@ Números marcados **pendente** só existem depois de rodar modelos reais. Nada a
 - **Perguntas que podem fazer:**
   - *O LangGraph ajudou? Com que número?* Pendente de rodar modelo real. Com os modelos de teste, a diferença é zero por construção, o que prova que a comparação está justa. Com LLM real, qualquer diferença vem da orquestração e é reportada com intervalo pareado (`python -m toolbr table --comparar A.json B.json`).
   - *Quando você usaria LangGraph em vez de um loop?* Quando o fluxo tem ramificações, pausa para humano, retomada com checkpoint ou vários agentes. Para um laço de tool calling simples, o loop é menor e mais fácil de depurar.
+
+---
+
+## Parte 6: busca nas políticas (RAG)
+
+- **Decisão:** cada política é dividida em trechos, um por seção `##` (22 trechos nas 3 políticas). Dois métodos: BM25 próprio (sem dependência, com normalização de acento, stopwords e radical simples) e embeddings multilíngues locais via fastembed (`paraphrase-multilingual-MiniLM-L12-v2`, sem custo de API). A avaliação usa as 3 políticas juntas, com 15 perguntas que trazem o trecho certo marcado, várias escritas com outras palavras de propósito.
+- **Por quê:** trecho por seção é a unidade que um humano citaria ("a regra de cancelamento"). Juntar as 3 políticas deixa a busca mais difícil e mais realista que buscar só no mundo certo.
+- **Alternativa descartada:** dividir por número fixo de tokens com sobreposição. Faz sentido para documentos longos; aqui as seções são curtas e já têm um assunto cada.
+- **Número que prova:** `python -m toolbr rag-eval`. BM25: recall@1 0,67, recall@3 0,87, recall@5 1,00, MRR 0,77. Embeddings: recall@1 0,80, recall@3 1,00, recall@5 1,00, MRR 0,90 [0,80 a 1,00]. **MRR embeddings menos BM25: +0,13 [IC 95%: −0,08 a +0,32], sem diferença comprovada com 15 perguntas.**
+- **Onde cada um erra:** o BM25 erra paráfrases ("o motoboy pegou minha comida" contra "saiu para entrega"; "teto para mandar dinheiro" contra "limite por transferência"). Os embeddings confundem seções vizinhas ("não fala o número do pedido" cai em cancelamento em vez de pedido não informado).
+- **Perguntas que podem fazer:**
+  - *Então embeddings são melhores?* Na média sim, mas com 15 perguntas o intervalo da diferença inclui zero; precisaria de umas 60 perguntas para afirmar. O próximo passo natural é busca híbrida (BM25 + embeddings), que costuma pegar o melhor dos dois.
+  - *Por que a política vai inteira no prompt se existe busca?* As políticas são curtas (menos de 600 palavras cada), então caber no contexto é mais confiável que buscar. O modo `--politica busca` tira a política do prompt e obriga o agente a buscar, para medir o custo de depender do RAG.
+  - *Por que MRR além de recall?* Recall@3 diz se o trecho certo aparece; MRR diz em que posição. Para um agente que lê só o primeiro trecho, a posição importa.

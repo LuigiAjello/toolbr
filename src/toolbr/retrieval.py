@@ -140,3 +140,11 @@ class EmbeddingRetriever:
 def _unit(vector: list[float]) -> list[float]:
     norm = math.sqrt(sum(x * x for x in vector)) or 1.0
     return [x / norm for x in vector]
+
+
+@cache
+def get_retriever(method: str, world: str):
+    """Buscador da ferramenta buscar_politica: 'bm25' ou um modelo de embedding."""
+    if method == "bm25":
+        return BM25Retriever(load_chunks(world))
+    return EmbeddingRetriever(load_chunks(world), method)

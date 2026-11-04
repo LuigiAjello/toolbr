@@ -11,6 +11,7 @@ from toolbr.agents.runtime import ToolRuntime
 from toolbr.defenses import make_defense
 from toolbr.grader import grade, state_changes
 from toolbr.models.base import Model
+from toolbr.retrieval import get_retriever
 from toolbr.tasks import Task
 from toolbr.worlds import make_world
 
@@ -22,8 +23,11 @@ def run_trial(
     agent,
     defense_name: str = "nenhuma",
     policy_mode: str = "contexto",
+    retrieval: str = "bm25",
 ) -> dict[str, Any]:
-    world = make_world(task.world, fail_plan=task.fail_plan)
+    world = make_world(
+        task.world, fail_plan=task.fail_plan, retriever=get_retriever(retrieval, task.world)
+    )
     if task.injection:
         inj = task.injection
         world.set_field(inj.table, inj.key, inj.column, inj.text)
@@ -60,12 +64,13 @@ def run_suite(
     defense_name: str = "nenhuma",
     policy_mode: str = "contexto",
     workers: int = 1,
+    retrieval: str = "bm25",
     on_done: Callable[[dict[str, Any]], None] | None = None,
 ) -> list[dict[str, Any]]:
     jobs = [(task, trial) for task in tasks for trial in range(1, k + 1)]
 
     def work(job: tuple[Task, int]) -> dict[str, Any]:
-        result = run_trial(job[0], job[1], model, agent, defense_name, policy_mode)
+        result = run_trial(job[0], job[1], model, agent, defense_name, policy_mode, retrieval)
         if on_done:
             on_done(result)
         return result

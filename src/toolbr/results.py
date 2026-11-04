@@ -87,6 +87,27 @@ def save_result(
     return path
 
 
+def save_json(payload: dict[str, Any], kind: str) -> Path:
+    """Salva um resultado que não é de tarefas (busca, segurança), com os metadados do git."""
+    from toolbr.tasks import dataset_version
+
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    payload = {
+        **payload,
+        "metadados_execucao": {
+            "data": datetime.now().astimezone().isoformat(timespec="seconds"),
+            "versao_dataset": dataset_version(),
+            "versao_toolbr": __version__,
+            **git_commit(),
+            **payload.get("metadados_execucao", {}),
+        },
+    }
+    path = RESULTS_DIR / f"{kind}_{stamp}.json"
+    path.write_text(json.dumps(mask_pii(payload), ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
 def load_results(kind: str | None = None, directory: Path | None = None) -> list[tuple[Path, dict]]:
     out = []
     for path in sorted((directory or RESULTS_DIR).glob("*.json")):

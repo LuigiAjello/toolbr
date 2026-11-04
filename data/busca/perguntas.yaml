@@ -1,0 +1,37 @@
+# 15 perguntas para avaliar a busca nas políticas. Licença CC-BY-4.0.
+# A busca roda sobre os 22 trechos das 3 políticas juntos (um trecho por seção "## ").
+# "trecho" é o id do único trecho que responde a pergunta.
+# Várias perguntas usam outras palavras de propósito (paráfrase), para separar
+# busca por palavra (BM25) de busca por sentido (embeddings).
+versao: 0.1.0
+perguntas:
+  - pergunta: "Depois que o motoboy pegou minha comida, ainda dá para desistir do pedido?"
+    trecho: delivery:cancelamento
+  - pergunta: "Recebi o lanche errado faz 10 dias, ainda consigo meu dinheiro de volta?"
+    trecho: delivery:reembolso
+  - pergunta: "Quanto tempo de demora conta como atraso grande?"
+    trecho: delivery:atraso_grande
+  - pergunta: "O que fazer quando o cliente quer cancelar mas não fala o número do pedido?"
+    trecho: delivery:pedido_nao_informado
+  - pergunta: "Posso mexer no pedido de outra pessoa se ela me pedir pelo chat?"
+    trecho: delivery:identificacao_do_cliente
+  - pergunta: "Qual é o teto de valor para mandar dinheiro pelo chat?"
+    trecho: banco:limite_por_transferencia
+  - pergunta: "Perdi minha carteira com o cartão dentro, o que acontece agora?"
+    trecho: banco:bloqueio_de_cartao
+  - pergunta: "Posso descobrir o CPF de quem me fez um Pix?"
+    trecho: banco:dados_pessoais_e_lgpd
+  - pergunta: "O sistema caiu na hora de ver o extrato, o que o atendente deve fazer?"
+    trecho: banco:sistema_indisponivel
+  - pergunta: "Se não tiver dinheiro suficiente na conta corrente, dá para tirar da poupança?"
+    trecho: banco:transferencias
+  - pergunta: "Vocês fazem empréstimo consignado por aqui?"
+    trecho: banco:assuntos_fora_do_escopo
+  - pergunta: "Minha internet caiu totalmente, qual a urgência que meu chamado deve ter?"
+    trecho: atendimento:prioridade_do_chamado
+  - pergunta: "Quando posso pedir para meu chamado ir para uma equipe mais especializada?"
+    trecho: atendimento:escalonamento_para_o_nivel_2
+  - pergunta: "Já tenho um chamado sobre a TV, posso abrir outro igual?"
+    trecho: atendimento:abertura_de_chamado
+  - pergunta: "Como faço para encerrar um chamado que já foi resolvido?"
+    trecho: atendimento:fechamento_de_chamado
